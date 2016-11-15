@@ -73,6 +73,36 @@ namespace Islands.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Castle_Blue {
+            get {
+                object obj = ResourceManager.GetObject("Castle_Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Castle_Green {
+            get {
+                object obj = ResourceManager.GetObject("Castle_Green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Castle_Red {
+            get {
+                object obj = ResourceManager.GetObject("Castle_Red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dragonstone_Unclaimed {
             get {
                 object obj = ResourceManager.GetObject("Dragonstone_Unclaimed", resourceCulture);

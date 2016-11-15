@@ -154,4 +154,13 @@
   <data name="MythHorse_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MythHorse_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Castle_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Castles\Castle_Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Castle_Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Castles\Castle_Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Castle_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Castles\Castle_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
