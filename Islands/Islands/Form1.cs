@@ -29,6 +29,8 @@ public partial class Form1 : Form //add partial?
     int oceeantiles = 0;
 	string maptype = "4islands";
 
+    int Blueposrow = 0;
+    int BlueposCell = 0;
     //global images
     Icon Village_Unclaimed = Properties.Resources.Village_Unclaimed;
 	Random randomizar = new Random();
@@ -81,7 +83,7 @@ public partial class Form1 : Form //add partial?
         layer2();
         minimap();
         layer3();
-        
+        this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow];
 	}
 
     public void minimap()
@@ -281,10 +283,6 @@ public partial class Form1 : Form //add partial?
                 {
                     cell.Value = Properties.Resources.Horse_Unclaimed;
                 }
-                else if (cell.Style.BackColor == Color.Gray)
-                {
-                    cell.Value = Properties.Resources.Mountain;
-                }
                 else if (cell.Style.BackColor == Color.Purple)
                 {
                     cell.Value = Properties.Resources.MythHorse_Unclaimed;
@@ -296,6 +294,22 @@ public partial class Form1 : Form //add partial?
                 else if (cell.Style.BackColor == Color.Gold)
                 {
                     cell.Value = Properties.Resources.Gold_Unclaimed;
+                }
+                else if (cell.Style.BackColor == Color.Red)
+                {
+                    cell.Value = Properties.Resources.Castle_Red;
+                }
+                else if (cell.Style.BackColor == Color.ForestGreen)
+                {
+                    cell.Value = Properties.Resources.Castle_Green;
+                }
+                else if (cell.Style.BackColor == Color.LightBlue)
+                {
+                    cell.Value = Properties.Resources.Castle_Blue;
+                }
+                else if (cell.Style.BackColor == Color.Gray)
+                {
+                    cell.Value = Properties.Resources.Mountain;
                 }
             }
         }
@@ -370,27 +384,6 @@ public partial class Form1 : Form //add partial?
                     i = i - 1;
                 }
             }
-
-            //generate mountains
-            int rando4 = randomizar.Next(30, 60);
-
-            for (int i = 0; i <= rando4; i++)
-            {
-                int rand1;
-                int rand2;
-
-                rand1 = randomizar.Next(1, mapsizehor);
-                rand2 = randomizar.Next(1, mapsizever);
-
-                if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
-                {
-                    Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.Gray;
-                }
-                else
-                {
-                    i = i - 1;
-                }
-            }
             
             //generate mythicals
             int rando5 = randomizar.Next(1, 2);
@@ -452,6 +445,85 @@ public partial class Form1 : Form //add partial?
                 }
             }
 
+            //red base
+            for (int i = 0; i == 0; i++)
+            {
+                int rand1;
+                int rand2;
+
+                rand1 = randomizar.Next(1, mapsizehor);
+                rand2 = randomizar.Next(1, mapsizever);
+
+                if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
+                {
+                    Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.Red;
+                }
+                else
+                {
+                    i = i - 1;
+                }
+            }
+
+            //blue base
+            for (int i = 0; i == 0; i++)
+            {
+                int rand1;
+                int rand2;
+
+                rand1 = randomizar.Next(1, mapsizehor);
+                rand2 = randomizar.Next(1, mapsizever);
+
+                if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
+                {
+                    Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.LightBlue;
+                    Blueposrow = rand2;
+                    BlueposCell = rand1;
+                }
+                else
+                {
+                    i = i - 1;
+                }
+            }
+
+            //green base
+            for (int i = 0; i == 0; i++)
+            {
+                int rand1;
+                int rand2;
+
+                rand1 = randomizar.Next(1, mapsizehor);
+                rand2 = randomizar.Next(1, mapsizever);
+
+                if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
+                {
+                    Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.ForestGreen;
+                }
+                else
+                {
+                    i = i - 1;
+                }
+            }
+
+            //generate mountains
+            int rando4 = randomizar.Next(30, 60);
+
+            for (int i = 0; i <= rando4; i++)
+            {
+                int rand1;
+                int rand2;
+
+                rand1 = randomizar.Next(1, mapsizehor);
+                rand2 = randomizar.Next(1, mapsizever);
+
+                if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
+                {
+                    Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.Gray;
+                }
+                else
+                {
+                    i = i - 1;
+                }
+            }
         }
         else
         {
