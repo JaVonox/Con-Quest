@@ -546,10 +546,18 @@ public partial class Form1 : Form //add partial?
         MinMap.ClearSelection();
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void THEALLSEEINGEYE_Click(object sender, EventArgs e)
     {
-        generatemap(Convert.ToInt32(textBox1.Text));
-        minimap();
+        if(Menu_Un.Visible == false)
+        {
+            Menu_Un.Visible = true;
+            MinMap.Visible = true;
+        }
+        else
+        {
+            Menu_Un.Visible = false;
+            MinMap.Visible = false;
+        }
     }
 
     //public Form1()

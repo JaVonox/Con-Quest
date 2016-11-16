@@ -30,10 +30,11 @@
         {
             this.Map = new System.Windows.Forms.DataGridView();
             this.MinMap = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Menu_Un = new System.Windows.Forms.PictureBox();
+            this.THEALLSEEINGEYE = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Map)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
             this.SuspendLayout();
             // 
             // Map
@@ -50,7 +51,7 @@
             this.Map.ColumnHeadersVisible = false;
             this.Map.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Map.GridColor = System.Drawing.Color.White;
-            this.Map.Location = new System.Drawing.Point(1, 0);
+            this.Map.Location = new System.Drawing.Point(1, -39);
             this.Map.Name = "Map";
             this.Map.ReadOnly = true;
             this.Map.RowHeadersVisible = false;
@@ -73,40 +74,41 @@
             this.MinMap.Size = new System.Drawing.Size(498, 290);
             this.MinMap.TabIndex = 2;
             // 
-            // button1
+            // Menu_Un
             // 
-            this.button1.Location = new System.Drawing.Point(1, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Moar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Menu_Un.Location = new System.Drawing.Point(1, 547);
+            this.Menu_Un.Name = "Menu_Un";
+            this.Menu_Un.Size = new System.Drawing.Size(857, 190);
+            this.Menu_Un.TabIndex = 0;
+            this.Menu_Un.TabStop = false;
             // 
-            // textBox1
+            // THEALLSEEINGEYE
             // 
-            this.textBox1.Location = new System.Drawing.Point(1, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 20);
-            this.textBox1.TabIndex = 4;
+            this.THEALLSEEINGEYE.Location = new System.Drawing.Point(783, 681);
+            this.THEALLSEEINGEYE.Name = "THEALLSEEINGEYE";
+            this.THEALLSEEINGEYE.Size = new System.Drawing.Size(75, 56);
+            this.THEALLSEEINGEYE.TabIndex = 3;
+            this.THEALLSEEINGEYE.Text = "( | )";
+            this.THEALLSEEINGEYE.UseVisualStyleBackColor = true;
+            this.THEALLSEEINGEYE.Click += new System.EventHandler(this.THEALLSEEINGEYE_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 733);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.THEALLSEEINGEYE);
+            this.Controls.Add(this.Menu_Un);
             this.Controls.Add(this.MinMap);
             this.Controls.Add(this.Map);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "MAP";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Map)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -114,8 +116,8 @@
 
         internal System.Windows.Forms.DataGridView Map;
         private System.Windows.Forms.DataGridView MinMap;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox Menu_Un;
+        private System.Windows.Forms.Button THEALLSEEINGEYE;
 
     }
 }
