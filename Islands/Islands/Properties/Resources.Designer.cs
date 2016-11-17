@@ -63,6 +63,16 @@ namespace Islands.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BIGVOID {
+            get {
+                object obj = ResourceManager.GetObject("BIGVOID", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Blue {
             get {
                 object obj = ResourceManager.GetObject("Blue", resourceCulture);
@@ -143,6 +153,26 @@ namespace Islands.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon {
+            get {
+                object obj = ResourceManager.GetObject("Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Icon1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mountain {
             get {
                 object obj = ResourceManager.GetObject("Mountain", resourceCulture);
@@ -216,6 +246,16 @@ namespace Islands.Properties {
         internal static System.Drawing.Bitmap Village_Unclaimed1 {
             get {
                 object obj = ResourceManager.GetObject("Village_Unclaimed1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VOID {
+            get {
+                object obj = ResourceManager.GetObject("VOID", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

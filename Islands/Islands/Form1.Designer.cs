@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Map = new System.Windows.Forms.DataGridView();
             this.MinMap = new System.Windows.Forms.DataGridView();
             this.Menu_Un = new System.Windows.Forms.PictureBox();
@@ -61,6 +62,7 @@
             this.SUnit_Def_Bonus = new System.Windows.Forms.Label();
             this.SUnit_Crit_Bonus = new System.Windows.Forms.Label();
             this.SUnit_Dodge_Bonus = new System.Windows.Forms.Label();
+            this.SUnit_Level = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Map)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
@@ -136,6 +138,7 @@
             // 
             // SUnit_Image
             // 
+            this.SUnit_Image.Image = global::Islands.Properties.Resources.BIGVOID;
             this.SUnit_Image.Location = new System.Drawing.Point(13, 566);
             this.SUnit_Image.Name = "SUnit_Image";
             this.SUnit_Image.Size = new System.Drawing.Size(170, 155);
@@ -153,6 +156,7 @@
             // 
             // SUnit_Move
             // 
+            this.SUnit_Move.Image = global::Islands.Properties.Resources.BIGVOID;
             this.SUnit_Move.Location = new System.Drawing.Point(211, 586);
             this.SUnit_Move.Name = "SUnit_Move";
             this.SUnit_Move.Size = new System.Drawing.Size(86, 73);
@@ -161,6 +165,7 @@
             // 
             // SUnit_Attack1
             // 
+            this.SUnit_Attack1.Image = global::Islands.Properties.Resources.BIGVOID;
             this.SUnit_Attack1.Location = new System.Drawing.Point(316, 586);
             this.SUnit_Attack1.Name = "SUnit_Attack1";
             this.SUnit_Attack1.Size = new System.Drawing.Size(86, 73);
@@ -169,6 +174,7 @@
             // 
             // SUnit_Attack2
             // 
+            this.SUnit_Attack2.Image = global::Islands.Properties.Resources.BIGVOID;
             this.SUnit_Attack2.Location = new System.Drawing.Point(425, 586);
             this.SUnit_Attack2.Name = "SUnit_Attack2";
             this.SUnit_Attack2.Size = new System.Drawing.Size(86, 73);
@@ -177,6 +183,7 @@
             // 
             // SUnit_Attack3
             // 
+            this.SUnit_Attack3.Image = global::Islands.Properties.Resources.BIGVOID;
             this.SUnit_Attack3.Location = new System.Drawing.Point(535, 586);
             this.SUnit_Attack3.Name = "SUnit_Attack3";
             this.SUnit_Attack3.Size = new System.Drawing.Size(86, 73);
@@ -221,6 +228,7 @@
             // 
             // SUnit_AttackDmg_img
             // 
+            this.SUnit_AttackDmg_img.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_AttackDmg_img.Location = new System.Drawing.Point(211, 699);
             this.SUnit_AttackDmg_img.Name = "SUnit_AttackDmg_img";
             this.SUnit_AttackDmg_img.Size = new System.Drawing.Size(26, 22);
@@ -229,6 +237,7 @@
             // 
             // SUnit_Def_img
             // 
+            this.SUnit_Def_img.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_Def_img.Location = new System.Drawing.Point(316, 699);
             this.SUnit_Def_img.Name = "SUnit_Def_img";
             this.SUnit_Def_img.Size = new System.Drawing.Size(26, 22);
@@ -237,6 +246,7 @@
             // 
             // SUnit_Crit_img
             // 
+            this.SUnit_Crit_img.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_Crit_img.Location = new System.Drawing.Point(425, 699);
             this.SUnit_Crit_img.Name = "SUnit_Crit_img";
             this.SUnit_Crit_img.Size = new System.Drawing.Size(26, 22);
@@ -245,6 +255,7 @@
             // 
             // SUnit_Dodge_img
             // 
+            this.SUnit_Dodge_img.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_Dodge_img.Location = new System.Drawing.Point(535, 699);
             this.SUnit_Dodge_img.Name = "SUnit_Dodge_img";
             this.SUnit_Dodge_img.Size = new System.Drawing.Size(26, 22);
@@ -296,6 +307,7 @@
             // 
             // SUnit_Weapon
             // 
+            this.SUnit_Weapon.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_Weapon.Location = new System.Drawing.Point(650, 566);
             this.SUnit_Weapon.Name = "SUnit_Weapon";
             this.SUnit_Weapon.Size = new System.Drawing.Size(16, 16);
@@ -304,6 +316,7 @@
             // 
             // SUnit_Armor
             // 
+            this.SUnit_Armor.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_Armor.Location = new System.Drawing.Point(650, 603);
             this.SUnit_Armor.Name = "SUnit_Armor";
             this.SUnit_Armor.Size = new System.Drawing.Size(16, 16);
@@ -312,6 +325,7 @@
             // 
             // SUnit_Soul
             // 
+            this.SUnit_Soul.Image = global::Islands.Properties.Resources.VOID;
             this.SUnit_Soul.Location = new System.Drawing.Point(650, 643);
             this.SUnit_Soul.Name = "SUnit_Soul";
             this.SUnit_Soul.Size = new System.Drawing.Size(16, 16);
@@ -381,11 +395,21 @@
             this.SUnit_Dodge_Bonus.TabIndex = 36;
             this.SUnit_Dodge_Bonus.Text = "label15";
             // 
+            // SUnit_Level
+            // 
+            this.SUnit_Level.AutoSize = true;
+            this.SUnit_Level.Location = new System.Drawing.Point(148, 550);
+            this.SUnit_Level.Name = "SUnit_Level";
+            this.SUnit_Level.Size = new System.Drawing.Size(35, 13);
+            this.SUnit_Level.TabIndex = 37;
+            this.SUnit_Level.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.SUnit_Level);
             this.Controls.Add(this.SUnit_Dodge_Bonus);
             this.Controls.Add(this.SUnit_Crit_Bonus);
             this.Controls.Add(this.SUnit_Def_Bonus);
@@ -419,6 +443,8 @@
             this.Controls.Add(this.Menu_Un);
             this.Controls.Add(this.MinMap);
             this.Controls.Add(this.Map);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "MAP";
@@ -478,6 +504,7 @@
         private System.Windows.Forms.Label SUnit_Def_Bonus;
         private System.Windows.Forms.Label SUnit_Crit_Bonus;
         private System.Windows.Forms.Label SUnit_Dodge_Bonus;
+        private System.Windows.Forms.Label SUnit_Level;
 
     }
 }

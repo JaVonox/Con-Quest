@@ -165,6 +165,18 @@
   <ItemGroup>
     <None Include="datafiles\Player_Sprites\Blue\TestSprite.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="datafiles\Basic\VOID.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="datafiles\Basic\LARGE VOID.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="datafiles\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="datafiles\Icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

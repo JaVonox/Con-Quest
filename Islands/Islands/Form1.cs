@@ -38,9 +38,28 @@ public partial class Form1 : Form //add partial?
 
 
     //RAM values
+    //Unit Assignment
     List<string> Unit_Names = new List<string>();
     List<int> Unit_Row = new List<int>();
     List<int> Unit_Cell = new List<int>();
+    //Unit Permenant values
+    List<int> Unit_Att = new List<int>();
+    List<int> Unit_Def = new List<int>();
+    List<int> UNit_Crit = new List<int>();
+    List<int> Unit_Dodge = new List<int>();
+    //Unit Bonus values
+    List<int> Unit_Att_B = new List<int>();
+    List<int> Unit_Def_B = new List<int>();
+    List<int> UNit_Crit_B = new List<int>();
+    List<int> Unit_Dodge_B = new List<int>();
+    //Unit Equipment
+    List<int> Unit_Weapon = new List<int>();
+    List<int> Unit_Armor = new List<int>();
+    List<int> Unit_Soul = new List<int>();
+    //Unit stats
+    List<int> Unit_Health = new List<int>();
+    List<int> Unit_MaxHealth = new List<int>();
+
     public Form1()
    { 
         InitializeComponent();
@@ -575,14 +594,20 @@ public partial class Form1 : Form //add partial?
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell - 1);
     }
-
+     
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        Console.WriteLine(sender);
-        //if (Unit_Row.Contains(sender)
-        //{
+        for(int Unit = 0; Unit < Unit_Names.Count();Unit++)
+        {
+        if (Unit_Row[Unit] == e.RowIndex)
+        {
+            if (Unit_Cell[Unit] == e.ColumnIndex)
+            {
+                SUnit_Name.Text = Unit_Names[Unit];
+            }
+        }
+        }
 
-        //}
     }
 }
 

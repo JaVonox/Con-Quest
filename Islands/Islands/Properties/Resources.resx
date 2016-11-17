@@ -118,52 +118,64 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Village_Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Village - C\Village_Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Village_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Village - C\Village_Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Village_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Village - C\Village_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Village_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Village - C\Village_Unclaimed.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Basic\Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Basic\Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Village_Unclaimed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Village - C\Village_Unclaimed.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dragonstone_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dragonstone_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Castle_Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Castles\Castle_Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gold_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gold_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Horse_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Horse_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mountain" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mountain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="MythHorse_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MythHorse_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Castle_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Castles\Castle_Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dragonstone_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dragonstone_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Castle_Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\datafiles\Castles\Castle_Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Village_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Village - C\Village_Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Village_Unclaimed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Village - C\Village_Unclaimed.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Castle_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\datafiles\Castles\Castle_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Horse_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Horse_Unclaimed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Village_Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Village - C\Village_Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Basic\Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TestSprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\datafiles\Player_Sprites\Blue\TestSprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VOID" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Basic\VOID.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Castle_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Castles\Castle_Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Village_Unclaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Village - C\Village_Unclaimed.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Village_Red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Village - C\Village_Red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mountain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mountain.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Basic\Green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BIGVOID" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Basic\LARGE VOID.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\datafiles\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
