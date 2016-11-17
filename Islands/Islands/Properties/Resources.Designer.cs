@@ -163,6 +163,16 @@ namespace Islands.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TestSprite {
+            get {
+                object obj = ResourceManager.GetObject("TestSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Village_Blue {
             get {
                 object obj = ResourceManager.GetObject("Village_Blue", resourceCulture);

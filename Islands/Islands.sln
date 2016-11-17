@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Islands", "Islands\Islands.csproj", "{DE150E4E-E3FA-4486-A12B-FB0212F7C6AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A793A42B-953E-472F-B248-16A89E8CC21D}"
-	ProjectSection(SolutionItems) = preProject
-		TextAndImageColumn.cs = TextAndImageColumn.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

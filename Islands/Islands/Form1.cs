@@ -35,6 +35,12 @@ public partial class Form1 : Form //add partial?
     Icon Village_Unclaimed = Properties.Resources.Village_Unclaimed;
 	Random randomizar = new Random();
     DataGridViewImageColumn imageCol0 = new DataGridViewImageColumn();
+
+
+    //RAM values
+    List<string> Unit_Names = new List<string>();
+    List<int> Unit_Row = new List<int>();
+    List<int> Unit_Cell = new List<int>();
     public Form1()
    { 
         InitializeComponent();
@@ -83,6 +89,7 @@ public partial class Form1 : Form //add partial?
         layer2();
         minimap();
         layer3();
+        loadgame();
         this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow];
 	}
 
@@ -535,10 +542,6 @@ public partial class Form1 : Form //add partial?
         }
     }
 
-	private void Map_SelectionChanged(object sender, EventArgs e)
-	{
-		Map.ClearSelection();
-    }
 
 
     private void MinMap_SelectionChanged(object sender, EventArgs e)
@@ -548,22 +551,39 @@ public partial class Form1 : Form //add partial?
 
     private void THEALLSEEINGEYE_Click(object sender, EventArgs e)
     {
-        if(Menu_Un.Visible == false)
+        if(MinMap.Visible == false)
         {
-            Menu_Un.Visible = true;
             MinMap.Visible = true;
         }
         else
         {
-            Menu_Un.Visible = false;
             MinMap.Visible = false;
         }
     }
 
-    //public Form1()
-    //{
-    //    Load += Form1_Load;
-    //}
+    public void loadgame()
+    {
+        Map.Rows[Blueposrow].Cells[BlueposCell + 1].Value = Properties.Resources.TestSprite;
+
+        Unit_Names.Insert(Unit_Names.Count, "John Eggberet"); //temp. dont hate me.
+        Unit_Row.Insert(Unit_Row.Count, Blueposrow);
+        Unit_Cell.Insert(Unit_Cell.Count, BlueposCell + 1);
+
+        Map.Rows[Blueposrow].Cells[BlueposCell - 1].Value = Properties.Resources.TestSprite;
+
+        Unit_Names.Insert(Unit_Names.Count, "Dave Stroodle"); //temp. dont hate me.
+        Unit_Row.Insert(Unit_Row.Count, Blueposrow);
+        Unit_Cell.Insert(Unit_Cell.Count, BlueposCell - 1);
+    }
+
+    private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+        Console.WriteLine(sender);
+        //if (Unit_Row.Contains(sender)
+        //{
+
+        //}
+    }
 }
 
 
