@@ -36,12 +36,18 @@ public partial class Form1 : Form //add partial?
 	Random randomizar = new Random();
     DataGridViewImageColumn imageCol0 = new DataGridViewImageColumn();
 
+    bool movemode = false;
 
     //RAM values
     //Unit Assignment
     List<string> Unit_Names = new List<string>();
     List<int> Unit_Row = new List<int>();
     List<int> Unit_Cell = new List<int>();
+    List<int> Unit_Lvl = new List<int>();
+    List<int> Unit_inf = new List<int>();
+    List<string> Unit_Class = new List<string>();
+    List<string> Unit_aff = new List<string>();
+    int unitnum = 0;
     //Unit Permenant values
     List<int> Unit_Att = new List<int>();
     List<int> Unit_Def = new List<int>();
@@ -561,7 +567,53 @@ public partial class Form1 : Form //add partial?
         }
     }
 
-
+    public void applyimage(int row,int cell)
+    {
+        if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Green)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Green;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Blue)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Blue;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Peru)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.SaddleBrown)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Horse_Unclaimed;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Purple)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.MythHorse_Unclaimed;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.IndianRed)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Dragonstone_Unclaimed;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Gold)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Gold_Unclaimed;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Red)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Red;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.ForestGreen)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Green;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.LightBlue)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Blue;
+        }
+        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Gray)
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.Mountain;
+        }
+    }
 
     private void MinMap_SelectionChanged(object sender, EventArgs e)
     {
@@ -585,29 +637,128 @@ public partial class Form1 : Form //add partial?
         Map.Rows[Blueposrow].Cells[BlueposCell + 1].Value = Properties.Resources.TestSprite;
 
         Unit_Names.Insert(Unit_Names.Count, "John Eggberet"); //temp. dont hate me.
+
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell + 1);
+        Unit_Lvl.Insert(Unit_Lvl.Count, 0);
+        Unit_Class.Insert(Unit_Class.Count, "Peasant");
+        Unit_Att.Insert(Unit_Att.Count, 2);
+        Unit_Def.Insert(Unit_Def.Count, 0);
+        UNit_Crit.Insert(UNit_Crit.Count, 1);
+        Unit_Dodge.Insert(Unit_Dodge.Count, 0);
+        Unit_MaxHealth.Insert(Unit_MaxHealth.Count, 25);
+        Unit_Health.Insert(Unit_Health.Count, 25);
+        Unit_Weapon.Insert(Unit_Weapon.Count, 0);
+        Unit_Armor.Insert(Unit_Armor.Count, 0);
+        Unit_Soul.Insert(Unit_Soul.Count, 0);
+        Unit_aff.Insert(Unit_aff.Count, "Blu");
+        Unit_inf.Insert(Unit_inf.Count, 1);
 
         Map.Rows[Blueposrow].Cells[BlueposCell - 1].Value = Properties.Resources.TestSprite;
 
         Unit_Names.Insert(Unit_Names.Count, "Dave Stroodle"); //temp. dont hate me.
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell - 1);
+        Unit_Lvl.Insert(Unit_Lvl.Count, 0);
+        Unit_Class.Insert(Unit_Class.Count, "Peasant");
+        Unit_Att.Insert(Unit_Att.Count, 2);
+        Unit_Def.Insert(Unit_Def.Count, 0);
+        UNit_Crit.Insert(UNit_Crit.Count, 1);
+        Unit_Dodge.Insert(Unit_Dodge.Count, 0);
+        Unit_MaxHealth.Insert(Unit_MaxHealth.Count, 25);
+        Unit_Health.Insert(Unit_Health.Count, 25);
+        Unit_Weapon.Insert(Unit_Weapon.Count, 0);
+        Unit_Armor.Insert(Unit_Armor.Count, 0);
+        Unit_Soul.Insert(Unit_Soul.Count, 0);
+        Unit_aff.Insert(Unit_aff.Count, "Blu");
+         Unit_inf.Insert(Unit_inf.Count, 1);
     }
      
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        for(int Unit = 0; Unit < Unit_Names.Count();Unit++)
+        if (movemode == true)
         {
-        if (Unit_Row[Unit] == e.RowIndex)
+
+            // A LOT OF BUGS HERE
+            // 1. The move tiles arent removed after move
+            // 2. there is no detection for areas inside the move zone
+            // 3. somethings up with who moves
+            
+            //also, unrelated, i found the unit generator generating 4 unit???
+
+            //add an if so that you cant move onto other units, without this it deletes the units image.
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
+
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
+
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+
+            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
+            applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
+            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
+
+            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+            applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+
+            Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.VOID;
+            Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
+            Unit_Row.Insert(unitnum,e.RowIndex);
+            Unit_Cell.Insert(unitnum,e.ColumnIndex);
+            movemode = false;
+        }
+        else
         {
-            if (Unit_Cell[Unit] == e.ColumnIndex)
+
+            for (int Unit = 0; Unit < Unit_Names.Count(); Unit++)
             {
-                SUnit_Name.Text = Unit_Names[Unit];
+                if (Unit_Row[Unit] == e.RowIndex)
+                {
+                    if (Unit_Cell[Unit] == e.ColumnIndex)
+                    {
+                        unitnum = Unit;
+                        SUnit_Name.Text = Unit_Names[Unit];
+                        SUnit_Level.Text = Convert.ToString(Unit_Lvl[Unit]);
+                        SUnit_Health.Maximum = Unit_MaxHealth[Unit];
+                        SUnit_Health.Value = Unit_Health[Unit];
+                        SUnit_Class.Text = Unit_Class[Unit];
+                        SUnit_AttackDmg.Text = Convert.ToString(Unit_Att[Unit]);
+                        SUnit_Def.Text = Convert.ToString(Unit_Def[Unit]);
+                        SUnit_Crit.Text = Convert.ToString(UNit_Crit[Unit]);
+                        SUnit_Dodge.Text = Convert.ToString(Unit_Dodge[Unit]);
+                        SUnit_aff.Text = Unit_aff[Unit];
+                        SUnit_Inf.Text = Convert.ToString(Unit_inf[Unit]);
+                    }
+                }
             }
         }
-        }
 
+    }
+
+    private void SUnit_Move_Click(object sender, EventArgs e)
+    {
+        //insert move code here!
+        //oh god this is a mess
+        // a working mess, but still a mess.
+        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+        Map.Rows[Unit_Row[unitnum] -2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+        movemode = true;
     }
 }
 

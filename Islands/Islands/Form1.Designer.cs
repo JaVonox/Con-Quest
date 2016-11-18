@@ -63,6 +63,16 @@
             this.SUnit_Crit_Bonus = new System.Windows.Forms.Label();
             this.SUnit_Dodge_Bonus = new System.Windows.Forms.Label();
             this.SUnit_Level = new System.Windows.Forms.Label();
+            this.SUnit_Class = new System.Windows.Forms.Label();
+            this.TopMenu = new System.Windows.Forms.PictureBox();
+            this.Gold_Img = new System.Windows.Forms.PictureBox();
+            this.Gold_lbl = new System.Windows.Forms.Label();
+            this.Movesleft_img = new System.Windows.Forms.PictureBox();
+            this.Movesleft = new System.Windows.Forms.Label();
+            this.SUnit_aff = new System.Windows.Forms.Label();
+            this.Influence_img = new System.Windows.Forms.PictureBox();
+            this.SUnit_Inf = new System.Windows.Forms.Label();
+            this.NextTurn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Map)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
@@ -78,6 +88,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Weapon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Armor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Soul)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TopMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gold_Img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Movesleft_img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Influence_img)).BeginInit();
             this.SuspendLayout();
             // 
             // Map
@@ -162,6 +176,7 @@
             this.SUnit_Move.Size = new System.Drawing.Size(86, 73);
             this.SUnit_Move.TabIndex = 6;
             this.SUnit_Move.TabStop = false;
+            this.SUnit_Move.Click += new System.EventHandler(this.SUnit_Move_Click);
             // 
             // SUnit_Attack1
             // 
@@ -195,9 +210,9 @@
             this.SUnit_Move_lbl.AutoSize = true;
             this.SUnit_Move_lbl.Location = new System.Drawing.Point(235, 671);
             this.SUnit_Move_lbl.Name = "SUnit_Move_lbl";
-            this.SUnit_Move_lbl.Size = new System.Drawing.Size(35, 13);
+            this.SUnit_Move_lbl.Size = new System.Drawing.Size(34, 13);
             this.SUnit_Move_lbl.TabIndex = 10;
-            this.SUnit_Move_lbl.Text = "label2";
+            this.SUnit_Move_lbl.Text = "Move";
             // 
             // SUnit_Attack1_lbl
             // 
@@ -404,11 +419,109 @@
             this.SUnit_Level.TabIndex = 37;
             this.SUnit_Level.Text = "label1";
             // 
+            // SUnit_Class
+            // 
+            this.SUnit_Class.AutoSize = true;
+            this.SUnit_Class.Location = new System.Drawing.Point(94, 550);
+            this.SUnit_Class.Name = "SUnit_Class";
+            this.SUnit_Class.Size = new System.Drawing.Size(35, 13);
+            this.SUnit_Class.TabIndex = 38;
+            this.SUnit_Class.Text = "label1";
+            // 
+            // TopMenu
+            // 
+            this.TopMenu.Location = new System.Drawing.Point(1, -1);
+            this.TopMenu.Name = "TopMenu";
+            this.TopMenu.Size = new System.Drawing.Size(1353, 27);
+            this.TopMenu.TabIndex = 39;
+            this.TopMenu.TabStop = false;
+            // 
+            // Gold_Img
+            // 
+            this.Gold_Img.Image = global::Islands.Properties.Resources.VOID;
+            this.Gold_Img.Location = new System.Drawing.Point(13, 10);
+            this.Gold_Img.Name = "Gold_Img";
+            this.Gold_Img.Size = new System.Drawing.Size(25, 25);
+            this.Gold_Img.TabIndex = 40;
+            this.Gold_Img.TabStop = false;
+            // 
+            // Gold_lbl
+            // 
+            this.Gold_lbl.AutoSize = true;
+            this.Gold_lbl.Location = new System.Drawing.Point(44, 13);
+            this.Gold_lbl.Name = "Gold_lbl";
+            this.Gold_lbl.Size = new System.Drawing.Size(35, 13);
+            this.Gold_lbl.TabIndex = 41;
+            this.Gold_lbl.Text = "label1";
+            // 
+            // Movesleft_img
+            // 
+            this.Movesleft_img.Image = global::Islands.Properties.Resources.VOID;
+            this.Movesleft_img.Location = new System.Drawing.Point(104, 10);
+            this.Movesleft_img.Name = "Movesleft_img";
+            this.Movesleft_img.Size = new System.Drawing.Size(25, 25);
+            this.Movesleft_img.TabIndex = 42;
+            this.Movesleft_img.TabStop = false;
+            // 
+            // Movesleft
+            // 
+            this.Movesleft.AutoSize = true;
+            this.Movesleft.Location = new System.Drawing.Point(148, 13);
+            this.Movesleft.Name = "Movesleft";
+            this.Movesleft.Size = new System.Drawing.Size(35, 13);
+            this.Movesleft.TabIndex = 43;
+            this.Movesleft.Text = "label1";
+            // 
+            // SUnit_aff
+            // 
+            this.SUnit_aff.AutoSize = true;
+            this.SUnit_aff.Location = new System.Drawing.Point(12, 716);
+            this.SUnit_aff.Name = "SUnit_aff";
+            this.SUnit_aff.Size = new System.Drawing.Size(35, 13);
+            this.SUnit_aff.TabIndex = 44;
+            this.SUnit_aff.Text = "label1";
+            // 
+            // Influence_img
+            // 
+            this.Influence_img.Location = new System.Drawing.Point(740, 569);
+            this.Influence_img.Name = "Influence_img";
+            this.Influence_img.Size = new System.Drawing.Size(86, 50);
+            this.Influence_img.TabIndex = 45;
+            this.Influence_img.TabStop = false;
+            // 
+            // SUnit_Inf
+            // 
+            this.SUnit_Inf.AutoSize = true;
+            this.SUnit_Inf.Location = new System.Drawing.Point(764, 643);
+            this.SUnit_Inf.Name = "SUnit_Inf";
+            this.SUnit_Inf.Size = new System.Drawing.Size(35, 13);
+            this.SUnit_Inf.TabIndex = 46;
+            this.SUnit_Inf.Text = "label9";
+            // 
+            // NextTurn
+            // 
+            this.NextTurn.Location = new System.Drawing.Point(634, 673);
+            this.NextTurn.Name = "NextTurn";
+            this.NextTurn.Size = new System.Drawing.Size(143, 56);
+            this.NextTurn.TabIndex = 47;
+            this.NextTurn.Text = "NEXT TURN";
+            this.NextTurn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.NextTurn);
+            this.Controls.Add(this.SUnit_Inf);
+            this.Controls.Add(this.Influence_img);
+            this.Controls.Add(this.SUnit_aff);
+            this.Controls.Add(this.Movesleft);
+            this.Controls.Add(this.Movesleft_img);
+            this.Controls.Add(this.Gold_lbl);
+            this.Controls.Add(this.Gold_Img);
+            this.Controls.Add(this.TopMenu);
+            this.Controls.Add(this.SUnit_Class);
             this.Controls.Add(this.SUnit_Level);
             this.Controls.Add(this.SUnit_Dodge_Bonus);
             this.Controls.Add(this.SUnit_Crit_Bonus);
@@ -464,6 +577,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Weapon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Armor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Soul)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TopMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gold_Img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Movesleft_img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Influence_img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,6 +622,16 @@
         private System.Windows.Forms.Label SUnit_Crit_Bonus;
         private System.Windows.Forms.Label SUnit_Dodge_Bonus;
         private System.Windows.Forms.Label SUnit_Level;
+        private System.Windows.Forms.Label SUnit_Class;
+        private System.Windows.Forms.PictureBox TopMenu;
+        private System.Windows.Forms.PictureBox Gold_Img;
+        private System.Windows.Forms.Label Gold_lbl;
+        private System.Windows.Forms.PictureBox Movesleft_img;
+        private System.Windows.Forms.Label Movesleft;
+        private System.Windows.Forms.Label SUnit_aff;
+        private System.Windows.Forms.PictureBox Influence_img;
+        private System.Windows.Forms.Label SUnit_Inf;
+        private System.Windows.Forms.Button NextTurn;
 
     }
 }
