@@ -569,6 +569,12 @@ public partial class Form1 : Form //add partial?
 
     public void applyimage(int row,int cell)
     {
+        if (Map.Rows[row].Cells[cell].Tag == "Unit")
+        {
+
+        }
+        else
+        {
         if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Green)
         {
             Map.Rows[row].Cells[cell].Value = Properties.Resources.Green;
@@ -613,6 +619,9 @@ public partial class Form1 : Form //add partial?
         {
             Map.Rows[row].Cells[cell].Value = Properties.Resources.Mountain;
         }
+        Map.Rows[row].Cells[cell].Tag = null;
+        }
+        
     }
 
     private void MinMap_SelectionChanged(object sender, EventArgs e)
@@ -635,6 +644,7 @@ public partial class Form1 : Form //add partial?
     public void loadgame()
     {
         Map.Rows[Blueposrow].Cells[BlueposCell + 1].Value = Properties.Resources.TestSprite;
+        Map.Rows[Blueposrow].Cells[BlueposCell + 1].Tag = "Unit";
 
         Unit_Names.Insert(Unit_Names.Count, "John Eggberet"); //temp. dont hate me.
 
@@ -655,6 +665,7 @@ public partial class Form1 : Form //add partial?
         Unit_inf.Insert(Unit_inf.Count, 1);
 
         Map.Rows[Blueposrow].Cells[BlueposCell - 1].Value = Properties.Resources.TestSprite;
+        Map.Rows[Blueposrow].Cells[BlueposCell - 1].Tag = "Unit";
 
         Unit_Names.Insert(Unit_Names.Count, "Dave Stroodle"); //temp. dont hate me.
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
@@ -679,37 +690,61 @@ public partial class Form1 : Form //add partial?
         if (movemode == true)
         {
 
-            // A LOT OF BUGS HERE
-            // 1. The move tiles arent removed after move
-            // 2. there is no detection for areas inside the move zone
-            // 3. somethings up with who moves
-            
-            //also, unrelated, i found the unit generator generating 4 unit???
+            if(Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag == "Gh")
+            {
+                // A LOT OF BUGS HERE
+                // 1. The move tiles arent removed after move
+                // 2. there is no detection for areas inside the move zone
+                // 3. somethings up with who moves
 
-            //add an if so that you cant move onto other units, without this it deletes the units image.
+                //also, unrelated, i found the unit generator generating 4 unit???
 
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
-            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
-            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
-            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
-            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Tag = null;
 
-            //Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.VOID;
-            Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
-            Unit_Row.Insert(unitnum,e.RowIndex);
-            Unit_Cell.Insert(unitnum,e.ColumnIndex);
-            movemode = false;
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+
+                Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag = "Unit";
+                Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
+                Unit_Row.Insert(unitnum, e.RowIndex);
+                Unit_Cell.Insert(unitnum, e.ColumnIndex);
+                movemode = false;
+
+            }
+            else
+            {
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
+                applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+
+                movemode = false;
+            }
         }
         else
         {
@@ -741,121 +776,135 @@ public partial class Form1 : Form //add partial?
 
     public void Displaymove()
     {
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.Mountain)
+        if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value == Properties.Resources.Mountain)
+        if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
+                
             }
 
-            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue )
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor ==Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
             {
 
             }
             else
             {
                 Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
             }
     }
     private void SUnit_Move_Click(object sender, EventArgs e)
