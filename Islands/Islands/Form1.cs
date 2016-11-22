@@ -687,25 +687,25 @@ public partial class Form1 : Form //add partial?
             //also, unrelated, i found the unit generator generating 4 unit???
 
             //add an if so that you cant move onto other units, without this it deletes the units image.
-            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
 
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
             applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
             applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
             applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
             applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
-
+            applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
+            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
             applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
             applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-
-            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
-            applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
             applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
-
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+            applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
             applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+            applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
             applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
 
-            Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.VOID;
+            //Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.VOID;
             Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
             Unit_Row.Insert(unitnum,e.RowIndex);
             Unit_Cell.Insert(unitnum,e.ColumnIndex);
@@ -739,25 +739,129 @@ public partial class Form1 : Form //add partial?
 
     }
 
+    public void Displaymove()
+    {
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+            }
+
+            if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.TestSprite || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value == Properties.Resources.Mountain)
+            {
+
+            }
+            else
+            {
+                Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+            }
+    }
     private void SUnit_Move_Click(object sender, EventArgs e)
     {
-        //insert move code here!
-        //oh god this is a mess
-        // a working mess, but still a mess.
-        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-        Map.Rows[Unit_Row[unitnum] -2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+        Displaymove();
+
         movemode = true;
     }
 }
