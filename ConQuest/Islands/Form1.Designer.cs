@@ -73,6 +73,8 @@
             this.Influence_img = new System.Windows.Forms.PictureBox();
             this.SUnit_Inf = new System.Windows.Forms.Label();
             this.NextTurn = new System.Windows.Forms.Button();
+            this.Debug = new System.Windows.Forms.Label();
+            this.SUnit_MovesLeft = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Map)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
@@ -117,6 +119,7 @@
             this.Map.Size = new System.Drawing.Size(1353, 582);
             this.Map.TabIndex = 1;
             this.Map.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellClick);
+            this.Map.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellMouseEnter);
             // 
             // MinMap
             // 
@@ -507,11 +510,31 @@
             this.NextTurn.Text = "NEXT TURN";
             this.NextTurn.UseVisualStyleBackColor = true;
             // 
+            // Debug
+            // 
+            this.Debug.AutoSize = true;
+            this.Debug.Location = new System.Drawing.Point(1251, -1);
+            this.Debug.Name = "Debug";
+            this.Debug.Size = new System.Drawing.Size(35, 13);
+            this.Debug.TabIndex = 48;
+            this.Debug.Text = "label1";
+            // 
+            // SUnit_MovesLeft
+            // 
+            this.SUnit_MovesLeft.AutoSize = true;
+            this.SUnit_MovesLeft.Location = new System.Drawing.Point(148, 716);
+            this.SUnit_MovesLeft.Name = "SUnit_MovesLeft";
+            this.SUnit_MovesLeft.Size = new System.Drawing.Size(35, 13);
+            this.SUnit_MovesLeft.TabIndex = 49;
+            this.SUnit_MovesLeft.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.SUnit_MovesLeft);
+            this.Controls.Add(this.Debug);
             this.Controls.Add(this.NextTurn);
             this.Controls.Add(this.SUnit_Inf);
             this.Controls.Add(this.Influence_img);
@@ -632,6 +655,8 @@
         private System.Windows.Forms.PictureBox Influence_img;
         private System.Windows.Forms.Label SUnit_Inf;
         private System.Windows.Forms.Button NextTurn;
+        private System.Windows.Forms.Label Debug;
+        private System.Windows.Forms.Label SUnit_MovesLeft;
 
     }
 }

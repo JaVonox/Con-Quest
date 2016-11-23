@@ -65,6 +65,10 @@ public partial class Form1 : Form //add partial?
     //Unit stats
     List<int> Unit_Health = new List<int>();
     List<int> Unit_MaxHealth = new List<int>();
+    List<int> Unit_Movesleft = new List<int>(); //max is 2
+
+    int movesleftplayer = 10;
+    int movesleftplayertotal = 10;
 
     public Form1()
    { 
@@ -75,7 +79,7 @@ public partial class Form1 : Form //add partial?
 	private void Form1_Load(object sender, EventArgs e)
 	{
 
-        for (int i = 0; i <= mapsizehor; i++) //bug here
+        for (int i = 0; i <= mapsizehor; i++)
         {
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             Map.Columns.Insert(i, imageCol);
@@ -115,6 +119,7 @@ public partial class Form1 : Form //add partial?
         minimap();
         layer3();
         loadgame();
+
         this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow];
 	}
 
@@ -296,8 +301,8 @@ public partial class Form1 : Form //add partial?
     {
         foreach (DataGridViewRow row in Map.Rows)
         {
-            foreach(DataGridViewCell cell in row.Cells) //runs really slow, mabye fix?
-                //IT worked fine, mabye a3.1 just sucks?
+            foreach(DataGridViewCell cell in row.Cells)
+
             {
                 if (cell.Style.BackColor == Color.Green)
                 {
@@ -646,7 +651,7 @@ public partial class Form1 : Form //add partial?
         Map.Rows[Blueposrow].Cells[BlueposCell + 1].Value = Properties.Resources.TestSprite;
         Map.Rows[Blueposrow].Cells[BlueposCell + 1].Tag = "Unit";
 
-        Unit_Names.Insert(Unit_Names.Count, "John Eggberet"); //temp. dont hate me.
+        Unit_Names.Insert(Unit_Names.Count, "Unit 1"); //temp. dont hate me.
 
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell + 1);
@@ -663,11 +668,12 @@ public partial class Form1 : Form //add partial?
         Unit_Soul.Insert(Unit_Soul.Count, 0);
         Unit_aff.Insert(Unit_aff.Count, "Blu");
         Unit_inf.Insert(Unit_inf.Count, 1);
+        Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
 
         Map.Rows[Blueposrow].Cells[BlueposCell - 1].Value = Properties.Resources.TestSprite;
         Map.Rows[Blueposrow].Cells[BlueposCell - 1].Tag = "Unit";
 
-        Unit_Names.Insert(Unit_Names.Count, "Dave Stroodle"); //temp. dont hate me.
+        Unit_Names.Insert(Unit_Names.Count, "Unit 2"); //temp. dont hate me.
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell - 1);
         Unit_Lvl.Insert(Unit_Lvl.Count, 0);
@@ -683,6 +689,9 @@ public partial class Form1 : Form //add partial?
         Unit_Soul.Insert(Unit_Soul.Count, 0);
         Unit_aff.Insert(Unit_aff.Count, "Blu");
          Unit_inf.Insert(Unit_inf.Count, 1);
+         Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
+
+         Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
     }
      
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -692,38 +701,69 @@ public partial class Form1 : Form //add partial?
 
             if(Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag == "Gh")
             {
-                // A LOT OF BUGS HERE
-                // 1. The move tiles arent removed after move
-                // 2. there is no detection for areas inside the move zone
-                // 3. somethings up with who moves
+                if (Unit_Movesleft[unitnum] > 0)
+                {
+                    // A LOT OF BUGS HERE
+                    // So for some reason, when you move a unit then switch units, you cant reuse the first unit
+                    //the unit generator is duplicating units for some reason
 
-                //also, unrelated, i found the unit generator generating 4 unit???
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Tag = null;
 
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Tag = null;
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
 
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+                    Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag = "Unit";
+                    Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
 
-                Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag = "Unit";
-                Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
-                Unit_Row.Insert(unitnum, e.RowIndex);
-                Unit_Cell.Insert(unitnum, e.ColumnIndex);
-                movemode = false;
 
+                    Unit_Row.RemoveAt(unitnum);
+                    Unit_Row.Insert(unitnum, e.RowIndex);
+
+                    Unit_Cell.RemoveAt(unitnum);
+                    Unit_Cell.Insert(unitnum, e.ColumnIndex);
+
+                    int temp = Unit_Movesleft[unitnum] - 1;
+                    Unit_Movesleft.RemoveAt(unitnum);
+                    Unit_Movesleft.Insert(unitnum, temp);
+
+                    SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[unitnum]);
+
+                    movemode = false;
+                }
+                else
+                {
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
+                    applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+
+                    movemode = false;
+                }
             }
             else
             {
@@ -767,6 +807,7 @@ public partial class Form1 : Form //add partial?
                         SUnit_Dodge.Text = Convert.ToString(Unit_Dodge[Unit]);
                         SUnit_aff.Text = Unit_aff[Unit];
                         SUnit_Inf.Text = Convert.ToString(Unit_inf[Unit]);
+                        SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[Unit]);
                     }
                 }
             }
@@ -907,11 +948,17 @@ public partial class Form1 : Form //add partial?
                 Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
             }
     }
+
     private void SUnit_Move_Click(object sender, EventArgs e)
     {
         Displaymove();
 
         movemode = true;
+    }
+
+    private void Map_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+    {
+        Debug.Text = Convert.ToString(Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag);
     }
 }
 

@@ -17,3 +17,13 @@ P:\Visual Studio 2013\Projects\Islands\Islands\obj\Debug\Islands.csproj.Generate
 P:\Visual Studio 2013\Projects\Islands\Islands\bin\Debug\Islands.exe
 P:\Visual Studio 2013\Projects\Islands\Islands\bin\Debug\Islands.pdb
 \\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\Islands\Islands\bin\Debug\datafiles\Inh_Values.accdb
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\bin\Debug\Islands.exe.config
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.exe
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.pdb
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\bin\Debug\datafiles\Inh_Values.accdb
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\bin\Debug\Islands.exe
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\bin\Debug\Islands.pdb
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.csprojResolveAssemblyReference.cache
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.Form1.resources
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.Properties.Resources.resources
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.csproj.GenerateResource.Cache
