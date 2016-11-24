@@ -31,6 +31,7 @@ public partial class Form1 : Form //add partial?
 
     int Blueposrow = 0;
     int BlueposCell = 0;
+    int reload = 1;
     //global images
     Icon Village_Unclaimed = Properties.Resources.Village_Unclaimed;
 	Random randomizar = new Random();
@@ -116,11 +117,18 @@ public partial class Form1 : Form //add partial?
         //generatemap(1000000);
         //generatemap(10000000);
         layer2();
+
+        if (reload == 1)
+        {
         minimap();
         layer3();
         loadgame();
-
         this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow];
+        }
+        else
+        {
+            reload = 1;
+        }
 	}
 
     public void minimap()
@@ -568,6 +576,7 @@ public partial class Form1 : Form //add partial?
             Map.Columns.Clear();
             landtiles = 0;
             oceeantiles = 0;
+            reload = 0;
             Form1_Load("MAP", new System.EventArgs()); //this reloads form1 so it can be regenerated
         }
     }
@@ -688,10 +697,11 @@ public partial class Form1 : Form //add partial?
         Unit_Armor.Insert(Unit_Armor.Count, 0);
         Unit_Soul.Insert(Unit_Soul.Count, 0);
         Unit_aff.Insert(Unit_aff.Count, "Blu");
-         Unit_inf.Insert(Unit_inf.Count, 1);
-         Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
+        Unit_inf.Insert(Unit_inf.Count, 1);
+        Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
 
          Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
+
     }
      
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -737,6 +747,7 @@ public partial class Form1 : Form //add partial?
                     Unit_Cell.Insert(unitnum, e.ColumnIndex);
 
                     int temp = Unit_Movesleft[unitnum] - 1;
+
                     Unit_Movesleft.RemoveAt(unitnum);
                     Unit_Movesleft.Insert(unitnum, temp);
 
