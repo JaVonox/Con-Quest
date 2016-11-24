@@ -116,7 +116,7 @@
             this.Map.RowHeadersVisible = false;
             this.Map.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.Map.ShowEditingIcon = false;
-            this.Map.Size = new System.Drawing.Size(1349, 578);
+            this.Map.Size = new System.Drawing.Size(1271, 578);
             this.Map.TabIndex = 1;
             this.Map.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellClick);
             this.Map.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellMouseEnter);
@@ -129,7 +129,7 @@
             this.MinMap.AllowUserToResizeRows = false;
             this.MinMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MinMap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MinMap.Location = new System.Drawing.Point(852, 443);
+            this.MinMap.Location = new System.Drawing.Point(774, 443);
             this.MinMap.Name = "MinMap";
             this.MinMap.ReadOnly = true;
             this.MinMap.Size = new System.Drawing.Size(498, 290);
@@ -532,7 +532,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1272, 729);
             this.Controls.Add(this.SUnit_MovesLeft);
             this.Controls.Add(this.Debug);
             this.Controls.Add(this.NextTurn);

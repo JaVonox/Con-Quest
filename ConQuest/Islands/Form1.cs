@@ -826,141 +826,269 @@ public partial class Form1 : Form //add partial?
 
     }
 
-    public void Displaymove()
-    {
-        if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+        public void Displaymove()
+        {
+            try
             {
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+                {
 
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
-            }
-
-        if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Blue)
-            {
-
-            }
-            else
-            {
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag = "Gh";
+                goto cheatsy1;
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor ==Color.Blue)
-            {
+        cheatsy1:
 
-            }
-            else
+            try
             {
-                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag = "Gh";
-            }
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Blue)
+                {
 
-            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor ==Color.Blue)
-            {
-
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag = "Gh";
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
-            }
-
-            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor ==Color.Blue)
-            {
-
-            }
-            else
-            {
-                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
-                
+                goto cheatsy2;
             }
 
-            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor ==Color.Blue)
+        cheatsy2:
+
+            try
             {
 
+                if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag = "Gh";
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag = "Gh";
+                goto cheatsy3;
             }
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue)
-            {
+        cheatsy3:
 
-            }
-            else
+            try
             {
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
-            }
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+                {
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor ==Color.Blue)
-            {
-
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag = "Gh";
-            }
-
-            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue )
-            {
-
-            }
-            else
-            {
-                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                goto cheatsy4;
             }
 
-            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue)
+        cheatsy4:
+
+            try
             {
 
+                if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag = "Gh";
+
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                goto cheatsy5;
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray|| Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor ==Color.Blue)
+        cheatsy5:
+
+            try
             {
 
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag = "Gh";
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                goto cheatsy6;
             }
 
-            if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor ==Color.Blue)
+        cheatsy6:
+
+            try
             {
 
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                }
             }
-            else
+            catch
             {
-                Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
+                goto cheatsy7;
             }
 
-            if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+        cheatsy7:
+
+            try
             {
 
-            }
-            else
-            {
-                Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
-                Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
-            }
-    }
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor == Color.Blue)
+                {
 
-    private void SUnit_Move_Click(object sender, EventArgs e)
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag = "Gh";
+                }
+            }
+            catch
+            {
+                goto cheatsy8;
+            }
+
+        cheatsy8:
+
+            try
+            {
+
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                }
+            }
+            catch
+            {
+                goto cheatsy9;
+            }
+
+        cheatsy9:
+
+            try
+            {
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                }
+            }
+            catch
+            {
+                goto cheatsy10;
+            }
+
+        cheatsy10:
+
+            try
+            {
+
+                if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Tag = "Gh";
+                }
+            }
+            catch
+            {
+                goto cheatsy11;
+            }
+
+        cheatsy11:
+
+            try
+            {
+
+                if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
+                }
+            }
+            catch
+            {
+                goto cheatsy12;
+            }
+
+        cheatsy12:
+
+            try
+            {
+
+                if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag == "Unit" || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.GoHere;
+                    Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag = "Gh";
+                }
+            }
+            catch
+            {
+                goto cheatsy13;
+            }
+
+        cheatsy13:
+
+            Console.WriteLine("cheatsy13 is reporting an error here because there isnt any code to goto, but im lazy and its late so im just doing this instead");
+        }
+
+        private void SUnit_Move_Click(object sender, EventArgs e)
     {
         Displaymove();
 
