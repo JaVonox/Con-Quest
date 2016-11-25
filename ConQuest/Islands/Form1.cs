@@ -70,7 +70,8 @@ public partial class Form1 : Form //add partial?
 
     int movesleftplayer = 10;
     int movesleftplayertotal = 10;
-
+    int productionval = 0;
+    int gold = 0;
     public Form1()
    { 
         InitializeComponent();
@@ -134,23 +135,23 @@ public partial class Form1 : Form //add partial?
     public void minimap()
     {
         //generate minimap here
-        MinMap.RowCount = Map.RowCount;
-        MinMap.ColumnCount = Map.ColumnCount;
+        InUse_lbl.RowCount = Map.RowCount;
+        InUse_lbl.ColumnCount = Map.ColumnCount;
 
-        for (int i = 0; i <= MinMap.Rows.Count - 1; i++) {
-            DataGridViewRow r = MinMap.Rows[i];
+        for (int i = 0; i <= InUse_lbl.Rows.Count - 1; i++) {
+            DataGridViewRow r = InUse_lbl.Rows[i];
             r.Height = 1;
         }
 
-        for (int i = 0; i <= MinMap.Columns.Count - 1; i++) {
-            DataGridViewColumn c = MinMap.Columns[i];
+        for (int i = 0; i <= InUse_lbl.Columns.Count - 1; i++) {
+            DataGridViewColumn c = InUse_lbl.Columns[i];
             c.Width = 1;
         }
 
         for (int colcount = 1; colcount <= mapsizever; colcount++) {
             for (int rocount = 1; rocount <= mapsizehor; rocount++) {
                 //bug here
-                MinMap.Rows[rocount - 1].Cells[colcount - 1].Style.BackColor = Map.Rows[rocount - 1].Cells[colcount - 1].Style.BackColor;
+                InUse_lbl.Rows[rocount - 1].Cells[colcount - 1].Style.BackColor = Map.Rows[rocount - 1].Cells[colcount - 1].Style.BackColor;
             }
         }
 
@@ -583,84 +584,93 @@ public partial class Form1 : Form //add partial?
 
     public void applyimage(int row,int cell)
     {
-        if (Map.Rows[row].Cells[cell].Tag == "Unit")
+        try
         {
+            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+            {
 
+            }
+            else
+            {
+                if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Green)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Green;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Blue)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Blue;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Peru)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.SaddleBrown)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Horse_Unclaimed;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Purple)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.MythHorse_Unclaimed;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.IndianRed)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Dragonstone_Unclaimed;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Gold)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Gold_Unclaimed;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Red)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Red;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.ForestGreen)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Green;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.LightBlue)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Blue;
+                }
+                else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Gray)
+                {
+                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Mountain;
+                }
+                Map.Rows[row].Cells[cell].Tag = null;
+            }
         }
-        else
-        {
-        if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Green)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Green;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Blue)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Blue;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Peru)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.SaddleBrown)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Horse_Unclaimed;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Purple)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.MythHorse_Unclaimed;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.IndianRed)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Dragonstone_Unclaimed;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Gold)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Gold_Unclaimed;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Red)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Red;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.ForestGreen)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Green;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.LightBlue)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Castle_Blue;
-        }
-        else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Gray)
-        {
-            Map.Rows[row].Cells[cell].Value = Properties.Resources.Mountain;
-        }
-        Map.Rows[row].Cells[cell].Tag = null;
-        }
-        
+    catch
+{
+ goto imnotokay;
+}
+    imnotokay:
+        Console.WriteLine("this is bad form.");
     }
 
     private void MinMap_SelectionChanged(object sender, EventArgs e)
     {
-        MinMap.ClearSelection();
+        InUse_lbl.ClearSelection();
     }
 
     private void THEALLSEEINGEYE_Click(object sender, EventArgs e)
     {
-        if(MinMap.Visible == false)
+        if(InUse_lbl.Visible == false)
         {
-            MinMap.Visible = true;
+            InUse_lbl.Visible = true;
         }
         else
         {
-            MinMap.Visible = false;
+            InUse_lbl.Visible = false;
         }
     }
 
     public void loadgame()
     {
+
         Map.Rows[Blueposrow].Cells[BlueposCell + 1].Value = Properties.Resources.TestSprite;
         Map.Rows[Blueposrow].Cells[BlueposCell + 1].Tag = "Unit";
 
-        Unit_Names.Insert(Unit_Names.Count, "Unit 1"); //temp. dont hate me.
+        Unit_Names.Insert(Unit_Names.Count, "Unit 1");
 
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell + 1);
@@ -682,7 +692,7 @@ public partial class Form1 : Form //add partial?
         Map.Rows[Blueposrow].Cells[BlueposCell - 1].Value = Properties.Resources.TestSprite;
         Map.Rows[Blueposrow].Cells[BlueposCell - 1].Tag = "Unit";
 
-        Unit_Names.Insert(Unit_Names.Count, "Unit 2"); //temp. dont hate me.
+        Unit_Names.Insert(Unit_Names.Count, "Unit 2");
         Unit_Row.Insert(Unit_Row.Count, Blueposrow);
         Unit_Cell.Insert(Unit_Cell.Count, BlueposCell - 1);
         Unit_Lvl.Insert(Unit_Lvl.Count, 0);
@@ -700,18 +710,31 @@ public partial class Form1 : Form //add partial?
         Unit_inf.Insert(Unit_inf.Count, 1);
         Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
 
-         Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
+        Gold_lbl.Text = Convert.ToString(gold);
+        Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
+        production.Text = Convert.ToString(productionval);
 
     }
      
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
     {
+
+        if (Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LightBlue)
+        {
+            InUse.Visible = true;
+            InUse.Text = "Castle";
+            Shop_btn.Visible = true;
+            Shop_btn.Enabled = false;
+            Armory_Btn.Visible = true;
+            Armory_Btn.Enabled = true;
+        }
+
         if (movemode == true)
         {
 
             if(Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag == "Gh")
             {
-                if (Unit_Movesleft[unitnum] > 0)
+                if (Unit_Movesleft[unitnum] > 0 && movesleftplayer > 0)
                 {
                     // A LOT OF BUGS HERE
                     // So for some reason, when you move a unit then switch units, you cant reuse the first unit
@@ -750,6 +773,10 @@ public partial class Form1 : Form //add partial?
 
                     Unit_Movesleft.RemoveAt(unitnum);
                     Unit_Movesleft.Insert(unitnum, temp);
+
+                    movesleftplayer = movesleftplayer - 1;
+
+                    Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
 
                     SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[unitnum]);
 
@@ -806,23 +833,40 @@ public partial class Form1 : Form //add partial?
                 {
                     if (Unit_Cell[Unit] == e.ColumnIndex)
                     {
-                        unitnum = Unit;
-                        SUnit_Name.Text = Unit_Names[Unit];
-                        SUnit_Level.Text = Convert.ToString(Unit_Lvl[Unit]);
-                        SUnit_Health.Maximum = Unit_MaxHealth[Unit];
-                        SUnit_Health.Value = Unit_Health[Unit];
-                        SUnit_Class.Text = Unit_Class[Unit];
-                        SUnit_AttackDmg.Text = Convert.ToString(Unit_Att[Unit]);
-                        SUnit_Def.Text = Convert.ToString(Unit_Def[Unit]);
-                        SUnit_Crit.Text = Convert.ToString(UNit_Crit[Unit]);
-                        SUnit_Dodge.Text = Convert.ToString(Unit_Dodge[Unit]);
-                        SUnit_aff.Text = Unit_aff[Unit];
-                        SUnit_Inf.Text = Convert.ToString(Unit_inf[Unit]);
-                        SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[Unit]);
+                        refreshlbl(Unit);
                     }
                 }
             }
         }
+
+    }
+
+    public void refreshlbl(int Unit)
+    {
+        unitnum = Unit;
+        SUnit_Name.Text = Unit_Names[Unit];
+        SUnit_Level.Text = Convert.ToString(Unit_Lvl[Unit]);
+        SUnit_Health.Maximum = Unit_MaxHealth[Unit];
+        SUnit_Health.Value = Unit_Health[Unit];
+        SUnit_Class.Text = Unit_Class[Unit];
+        SUnit_AttackDmg.Text = Convert.ToString(Unit_Att[Unit]);
+        SUnit_Def.Text = Convert.ToString(Unit_Def[Unit]);
+        SUnit_Crit.Text = Convert.ToString(UNit_Crit[Unit]);
+        SUnit_Dodge.Text = Convert.ToString(Unit_Dodge[Unit]);
+        SUnit_aff.Text = Unit_aff[Unit];
+        SUnit_Inf.Text = Convert.ToString(Unit_inf[Unit]);
+        SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[Unit]);
+
+        Gold_lbl.Text = Convert.ToString(gold);
+        Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
+        production.Text = Convert.ToString(productionval);
+
+        InUse.Visible = false;
+        InUse.Text = "null";
+        Shop_btn.Visible = false;
+        Shop_btn.Enabled = false;
+        Armory_Btn.Visible = false;
+        Armory_Btn.Enabled = false;
 
     }
 
@@ -1098,6 +1142,20 @@ public partial class Form1 : Form //add partial?
     private void Map_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
     {
         Debug.Text = Convert.ToString(Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag);
+    }
+
+    private void NextTurn_Click(object sender, EventArgs e)
+    {
+        //would have AI code go here, but i havent coded it yet.
+
+        for (int i = 0; i < Unit_Names.Count(); i++)
+        {
+            Unit_Movesleft[i] = 2;
+        }
+
+        productionval = productionval + 1;
+        movesleftplayer = movesleftplayertotal;
+        refreshlbl(unitnum);
     }
 }
 

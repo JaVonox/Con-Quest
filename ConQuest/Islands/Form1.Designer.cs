@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Map = new System.Windows.Forms.DataGridView();
-            this.MinMap = new System.Windows.Forms.DataGridView();
+            this.InUse_lbl = new System.Windows.Forms.DataGridView();
             this.Menu_Un = new System.Windows.Forms.PictureBox();
             this.THEALLSEEINGEYE = new System.Windows.Forms.Button();
             this.SUnit_Image = new System.Windows.Forms.PictureBox();
@@ -75,8 +75,13 @@
             this.NextTurn = new System.Windows.Forms.Button();
             this.Debug = new System.Windows.Forms.Label();
             this.SUnit_MovesLeft = new System.Windows.Forms.Label();
+            this.Production_img = new System.Windows.Forms.PictureBox();
+            this.production = new System.Windows.Forms.Label();
+            this.Shop_btn = new System.Windows.Forms.Button();
+            this.Armory_Btn = new System.Windows.Forms.Button();
+            this.InUse = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Map)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InUse_lbl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Move)).BeginInit();
@@ -94,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Gold_Img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Movesleft_img)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Influence_img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Production_img)).BeginInit();
             this.SuspendLayout();
             // 
             // Map
@@ -121,19 +127,19 @@
             this.Map.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellClick);
             this.Map.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellMouseEnter);
             // 
-            // MinMap
+            // InUse_lbl
             // 
-            this.MinMap.AllowUserToAddRows = false;
-            this.MinMap.AllowUserToDeleteRows = false;
-            this.MinMap.AllowUserToResizeColumns = false;
-            this.MinMap.AllowUserToResizeRows = false;
-            this.MinMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MinMap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MinMap.Location = new System.Drawing.Point(774, 443);
-            this.MinMap.Name = "MinMap";
-            this.MinMap.ReadOnly = true;
-            this.MinMap.Size = new System.Drawing.Size(498, 290);
-            this.MinMap.TabIndex = 2;
+            this.InUse_lbl.AllowUserToAddRows = false;
+            this.InUse_lbl.AllowUserToDeleteRows = false;
+            this.InUse_lbl.AllowUserToResizeColumns = false;
+            this.InUse_lbl.AllowUserToResizeRows = false;
+            this.InUse_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.InUse_lbl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InUse_lbl.Location = new System.Drawing.Point(774, 443);
+            this.InUse_lbl.Name = "InUse_lbl";
+            this.InUse_lbl.ReadOnly = true;
+            this.InUse_lbl.Size = new System.Drawing.Size(498, 290);
+            this.InUse_lbl.TabIndex = 2;
             // 
             // Menu_Un
             // 
@@ -509,6 +515,7 @@
             this.NextTurn.TabIndex = 47;
             this.NextTurn.Text = "NEXT TURN";
             this.NextTurn.UseVisualStyleBackColor = true;
+            this.NextTurn.Click += new System.EventHandler(this.NextTurn_Click);
             // 
             // Debug
             // 
@@ -528,11 +535,64 @@
             this.SUnit_MovesLeft.TabIndex = 49;
             this.SUnit_MovesLeft.Text = "label1";
             // 
+            // Production_img
+            // 
+            this.Production_img.Image = global::Islands.Properties.Resources.VOID;
+            this.Production_img.Location = new System.Drawing.Point(202, 10);
+            this.Production_img.Name = "Production_img";
+            this.Production_img.Size = new System.Drawing.Size(25, 25);
+            this.Production_img.TabIndex = 50;
+            this.Production_img.TabStop = false;
+            // 
+            // production
+            // 
+            this.production.AutoSize = true;
+            this.production.Location = new System.Drawing.Point(249, 13);
+            this.production.Name = "production";
+            this.production.Size = new System.Drawing.Size(35, 13);
+            this.production.TabIndex = 51;
+            this.production.Text = "label1";
+            // 
+            // Shop_btn
+            // 
+            this.Shop_btn.Location = new System.Drawing.Point(417, 3);
+            this.Shop_btn.Name = "Shop_btn";
+            this.Shop_btn.Size = new System.Drawing.Size(75, 23);
+            this.Shop_btn.TabIndex = 52;
+            this.Shop_btn.Text = "Shop";
+            this.Shop_btn.UseVisualStyleBackColor = true;
+            this.Shop_btn.Visible = false;
+            // 
+            // Armory_Btn
+            // 
+            this.Armory_Btn.Location = new System.Drawing.Point(524, 3);
+            this.Armory_Btn.Name = "Armory_Btn";
+            this.Armory_Btn.Size = new System.Drawing.Size(75, 23);
+            this.Armory_Btn.TabIndex = 53;
+            this.Armory_Btn.Text = "Armory";
+            this.Armory_Btn.UseVisualStyleBackColor = true;
+            this.Armory_Btn.Visible = false;
+            // 
+            // InUse
+            // 
+            this.InUse.AutoSize = true;
+            this.InUse.Location = new System.Drawing.Point(334, 8);
+            this.InUse.Name = "InUse";
+            this.InUse.Size = new System.Drawing.Size(39, 13);
+            this.InUse.TabIndex = 55;
+            this.InUse.Text = "In use:";
+            this.InUse.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 729);
+            this.Controls.Add(this.InUse);
+            this.Controls.Add(this.Armory_Btn);
+            this.Controls.Add(this.Shop_btn);
+            this.Controls.Add(this.production);
+            this.Controls.Add(this.Production_img);
             this.Controls.Add(this.SUnit_MovesLeft);
             this.Controls.Add(this.Debug);
             this.Controls.Add(this.NextTurn);
@@ -577,7 +637,7 @@
             this.Controls.Add(this.SUnit_Image);
             this.Controls.Add(this.THEALLSEEINGEYE);
             this.Controls.Add(this.Menu_Un);
-            this.Controls.Add(this.MinMap);
+            this.Controls.Add(this.InUse_lbl);
             this.Controls.Add(this.Map);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -586,7 +646,7 @@
             this.Text = "MAP";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Map)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InUse_lbl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Move)).EndInit();
@@ -604,6 +664,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Gold_Img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Movesleft_img)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Influence_img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Production_img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -612,7 +673,7 @@
         #endregion
 
         internal System.Windows.Forms.DataGridView Map;
-        private System.Windows.Forms.DataGridView MinMap;
+        private System.Windows.Forms.DataGridView InUse_lbl;
         private System.Windows.Forms.PictureBox Menu_Un;
         private System.Windows.Forms.Button THEALLSEEINGEYE;
         private System.Windows.Forms.PictureBox SUnit_Image;
@@ -657,6 +718,11 @@
         private System.Windows.Forms.Button NextTurn;
         private System.Windows.Forms.Label Debug;
         private System.Windows.Forms.Label SUnit_MovesLeft;
+        private System.Windows.Forms.PictureBox Production_img;
+        private System.Windows.Forms.Label production;
+        private System.Windows.Forms.Button Shop_btn;
+        private System.Windows.Forms.Button Armory_Btn;
+        private System.Windows.Forms.Label InUse;
 
     }
 }
