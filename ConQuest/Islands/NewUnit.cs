@@ -19,9 +19,22 @@ namespace Islands
 
         private void NewUnit_Load(object sender, EventArgs e)
         {
-            for(int i = 0; i < 100; i++)
+            Units.ColumnCount = 9;
+            Units.RowCount = 100;
+
+            Units.Rows[98].Cells[4].Style.BackColor = Color.Yellow;
+            Units.Rows[98].Cells[4].Value = "Peasant : 10P";
+        }
+
+        private void Units_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex == 98)
             {
-                Units.Rows.Insert(i, DataGridViewRow);
+                if(e.ColumnIndex == 4)
+                {
+                    BuyUnit Buy = new BuyUnit();
+                    Buy.Show();
+                }
             }
         }
     }

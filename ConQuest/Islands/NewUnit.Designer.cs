@@ -34,11 +34,17 @@
             // 
             // Units
             // 
+            this.Units.AllowUserToAddRows = false;
+            this.Units.AllowUserToDeleteRows = false;
+            this.Units.AllowUserToResizeColumns = false;
+            this.Units.AllowUserToResizeRows = false;
             this.Units.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Units.Location = new System.Drawing.Point(-3, -1);
+            this.Units.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Units.Location = new System.Drawing.Point(0, 0);
             this.Units.Name = "Units";
-            this.Units.Size = new System.Drawing.Size(764, 456);
+            this.Units.Size = new System.Drawing.Size(761, 453);
             this.Units.TabIndex = 0;
+            this.Units.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Units_CellContentClick);
             // 
             // NewUnit
             // 

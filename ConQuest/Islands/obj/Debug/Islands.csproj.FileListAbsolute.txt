@@ -37,3 +37,5 @@ C:\Users\Jamie\Desktop\Con-Quest-master\ConQuest\Islands\obj\Debug\Islands.cspro
 C:\Users\Jamie\Desktop\Con-Quest-master\ConQuest\Islands\obj\Debug\Islands.Form1.resources
 C:\Users\Jamie\Desktop\Con-Quest-master\ConQuest\Islands\obj\Debug\Islands.Properties.Resources.resources
 C:\Users\Jamie\Desktop\Con-Quest-master\ConQuest\Islands\obj\Debug\Islands.csproj.GenerateResource.Cache
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.NewUnit.resources
+\\ATS-V-FS01\Year2012$\JGorm95404\Visual Studio 2013\Projects\ConQuest\Islands\obj\Debug\Islands.BuyUnit.resources

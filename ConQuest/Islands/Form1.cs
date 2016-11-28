@@ -1157,6 +1157,17 @@ public partial class Form1 : Form //add partial?
         movesleftplayer = movesleftplayertotal;
         refreshlbl(unitnum);
     }
+
+    private void Map_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+    }
+
+    private void Armory_Btn_Click(object sender, EventArgs e)
+    {
+        NewUnit Armory = new NewUnit();
+        Armory.Show();
+    }
 }
 
 

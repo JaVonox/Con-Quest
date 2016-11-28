@@ -125,6 +125,7 @@
             this.Map.Size = new System.Drawing.Size(1271, 578);
             this.Map.TabIndex = 1;
             this.Map.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellClick);
+            this.Map.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellContentClick);
             this.Map.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellMouseEnter);
             // 
             // InUse_lbl
@@ -572,6 +573,7 @@
             this.Armory_Btn.Text = "Armory";
             this.Armory_Btn.UseVisualStyleBackColor = true;
             this.Armory_Btn.Visible = false;
+            this.Armory_Btn.Click += new System.EventHandler(this.Armory_Btn_Click);
             // 
             // InUse
             // 
