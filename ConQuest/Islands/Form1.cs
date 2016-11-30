@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+//imports a lot of libraries.
+// a LOT
+using System; 
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,39 +10,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-namespace Islands
-{
-
-
 using Microsoft.VisualBasic;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 
-public partial class Form1 : Form //add partial?
+namespace Islands //this is the namespace for the code, its still islands for now but i may change it in the future
+{
+
+
+
+public partial class Form1 : Form //the first form
 {
 	//the horizontal position of the map
 	int mapsizehor = 100;
 	//the vertical position of the map
 	int mapsizever = 100;
+    //the amount of land and ocean tiles on the map
     int landtiles = 0;
     int oceeantiles = 0;
-	string maptype = "4islands";
 
+    //the positions of the blue castle, which is the player for now (to be updated).
     int Blueposrow = 0;
     int BlueposCell = 0;
+    //this checks if the program was reloaded, without it many excess units are spawned.
     int reload = 1;
-    //global images
+    //image for villages, obsolete.
     Icon Village_Unclaimed = Properties.Resources.Village_Unclaimed;
+    //the randomizer
 	Random randomizar = new Random();
+    //defines a datagridviewimagecolumn
     DataGridViewImageColumn imageCol0 = new DataGridViewImageColumn();
-
+    //movemode is a variable which checks if the player is attempting to move a unit, hence the name
     bool movemode = false;
 
-    //RAM values
+    //Unit variables. there is a lot.
+
     //Unit Assignment
     List<string> Unit_Names = new List<string>();
     List<int> Unit_Row = new List<int>();
@@ -48,6 +54,7 @@ public partial class Form1 : Form //add partial?
     List<int> Unit_inf = new List<int>();
     List<string> Unit_Class = new List<string>();
     List<string> Unit_aff = new List<string>();
+    //unit number, it stores which unit is currently selected.
     int unitnum = 0;
     //Unit Permenant values
     List<int> Unit_Att = new List<int>();
@@ -68,11 +75,12 @@ public partial class Form1 : Form //add partial?
     List<int> Unit_MaxHealth = new List<int>();
     List<int> Unit_Movesleft = new List<int>(); //max is 2
 
-    int movesleftplayer = 10;
-    int movesleftplayertotal = 10;
-    int productionval = 0;
-    int gold = 0;
-    public Form1()
+    int movesleftplayer = 10; //the movesleft for the player is 10 by default
+    int movesleftplayertotal = 10; //the maximum movesleft is also 10, but may be increased somehow? im thinking +1 per 10 tiers.
+    int productionval = 0; //the amount of production stored. increases by 1 each turn.
+    int gold = 0; //the amount of gold stored.
+
+    public Form1() //this initializes form 1
    { 
         InitializeComponent();
 
@@ -80,15 +88,17 @@ public partial class Form1 : Form //add partial?
 
 	private void Form1_Load(object sender, EventArgs e)
 	{
+        //this void controls how the game is started, it sets up constant values like the amount of columns and rows, and runs a lot of voids.
 
-        for (int i = 0; i <= mapsizehor; i++)
+        for (int i = 0; i <= mapsizehor; i++) //generates the columns
         {
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             Map.Columns.Insert(i, imageCol);
         }
-            //Map.ColumnCount = mapsizehor;
-		Map.RowCount = mapsizever;
 
+		Map.RowCount = mapsizever; //generates the rows
+
+        //these set the widths for the cells.
 		for (int i = 0; i <= Map.Rows.Count - 1; i++) {
 			DataGridViewRow r = Map.Rows[i];
 			r.Height = 25;
@@ -98,6 +108,8 @@ public partial class Form1 : Form //add partial?
 			DataGridViewColumn c = Map.Columns[i];
 			c.Width = 25;
 		}
+
+        //this sets the backcolour for all of the cells to blue (ocean) by default.
 
 		for (int i = 0; i <= Map.Rows.Count - 1; i++) {
 			for (int ColNo = 0; ColNo <= Map.ColumnCount - 1; ColNo++) {
@@ -115,26 +127,27 @@ public partial class Form1 : Form //add partial?
         generatemap(1000);
         generatemap(10000);
         generatemap(100000);
-        //generatemap(1000000);
-        //generatemap(10000000);
-        layer2();
+        layer2(); 
 
-        if (reload == 1)
+        //if things go wrong and the map is not good enough, it restarts here.
+        if (reload == 1) 
         {
+        //these set up the game
         minimap();
         layer3();
         loadgame();
-        this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow];
+        this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow]; //this moves the map view towards the blue castle
         }
         else
         {
-            reload = 1;
+            reload = 1; //if the map is not good, it forces a reload.
         }
 	}
 
     public void minimap()
     {
         //generate minimap here
+        //this is basically just the same as form1_load but smaller.
         InUse_lbl.RowCount = Map.RowCount;
         InUse_lbl.ColumnCount = Map.ColumnCount;
 
@@ -162,8 +175,13 @@ public partial class Form1 : Form //add partial?
     public void generatemap(int msize)
 	{
 		//snake method of generation
-		//Me.Map.CurrentCell = Me.Map(y1, x1)
 
+        
+
+        //im not gonna go through everything that is done here, but essentially what it does is generate a random line.
+        //it then takes the coordinates for this line, and adds 3 green tiles in every direction (except diagonal) from it.
+
+        //this declares some variables which will be used in the generation
 		int i1x = 0;
 		int i1y = 0;
 		List<int> snkx = new List<int>();
@@ -177,17 +195,7 @@ public partial class Form1 : Form //add partial?
 		snkx.Insert(0, i1x);
 		snky.Insert(0, i1y);
 
-		Map.Rows[snkx[0]].Cells[snky[0]].Style.BackColor = Color.DarkGreen;
-
-		//10 is tiny island
-        //100 is small island
-        //1000 is large island
-        //10000 is continent
-        //100000 is large continent
-        //1000000 is Mega-Continent
-        //10000000 is Planetary Land Bridge
-
-		//results may vary. alot.
+		Map.Rows[snkx[0]].Cells[snky[0]].Style.BackColor = Color.PeachPuff; 
 
         int i = Convert.ToInt32(msize);
 		int rand = 0;
@@ -247,7 +255,7 @@ public partial class Form1 : Form //add partial?
 			}
 
 		} catch (Exception ex) {
-			goto Exitry1; // TODO: might not be correct. Was : Exit Try
+			goto Exitry1; 
 		}
 
         Exitry1:
@@ -298,7 +306,7 @@ public partial class Form1 : Form //add partial?
 			}
 
 		} catch (Exception ex) {
-			goto Exitry2; // TODO: might not be correct. Was : Exit Try
+			goto Exitry2; 
 		}
 
         Exitry2:
@@ -308,6 +316,7 @@ public partial class Form1 : Form //add partial?
 
     public void layer3()
     {
+        //this checks each cell of each row in the datagridview, and applies an appropriate image for it.
         foreach (DataGridViewRow row in Map.Rows)
         {
             foreach(DataGridViewCell cell in row.Cells)
@@ -362,6 +371,7 @@ public partial class Form1 : Form //add partial?
     }
     public void layer2()
     {
+        //this void generates tiles such as villages and horses, to be set to images later in layer3()
         foreach(DataGridViewRow row in Map.Rows)
         {
            foreach(DataGridViewCell cell in row.Cells)
@@ -584,6 +594,9 @@ public partial class Form1 : Form //add partial?
 
     public void applyimage(int row,int cell)
     {
+        //this is essentially layer3 but in the form of a function, this is done because when the images are set for movement
+        //they replace the old images, and must be reset back afterwards, it would be unefficient to replace every tile every time a unit moves
+        //so instead it only replaces tiles in the radius of the unit.
         try
         {
             if (Map.Rows[row].Cells[cell].Tag == "Unit")
@@ -647,13 +660,12 @@ public partial class Form1 : Form //add partial?
         Console.WriteLine("this is bad form.");
     }
 
-    private void MinMap_SelectionChanged(object sender, EventArgs e)
-    {
-        InUse_lbl.ClearSelection();
-    }
-
     private void THEALLSEEINGEYE_Click(object sender, EventArgs e)
     {
+        //THE INNER WORKINGS OF THE ALL SEEING EYE ARE MYSTERIES TO THE EYES OF MORTALS
+        //THIS HAS HOW IT HAS ALWAYS BEEN, AND THIS IS HOW IT WILL CONTINUE TO BE FOR ALL ETERNITY
+
+        //basically just toggles the visibility of the minimap
         if(InUse_lbl.Visible == false)
         {
             InUse_lbl.Visible = true;
@@ -664,52 +676,37 @@ public partial class Form1 : Form //add partial?
         }
     }
 
+    public void createunit(string name, int row, int cell, int lvl, string cls, int att, int def, int crit,int dodge, int Maxhp, int hp, int weapon, int armor, int soul, string aff, int inf, int movesleft)
+    {
+        //this takes values and creates a unit with them
+        Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
+        Map.Rows[row].Cells[cell].Tag = "Unit";
+        Unit_Names.Insert(Unit_Names.Count, name);
+        Unit_Row.Insert(Unit_Row.Count, row);
+        Unit_Cell.Insert(Unit_Cell.Count, cell);
+        Unit_Lvl.Insert(Unit_Lvl.Count, lvl);
+        Unit_Class.Insert(Unit_Class.Count, cls);
+        Unit_Att.Insert(Unit_Att.Count, att);
+        Unit_Def.Insert(Unit_Def.Count, def);
+        UNit_Crit.Insert(UNit_Crit.Count, crit);
+        Unit_Dodge.Insert(Unit_Dodge.Count, dodge);
+        Unit_MaxHealth.Insert(Unit_MaxHealth.Count, Maxhp);
+        Unit_Health.Insert(Unit_Health.Count, hp);
+        Unit_Weapon.Insert(Unit_Weapon.Count, weapon);
+        Unit_Armor.Insert(Unit_Armor.Count, armor);
+        Unit_Soul.Insert(Unit_Soul.Count, soul);
+        Unit_aff.Insert(Unit_aff.Count, aff);
+        Unit_inf.Insert(Unit_inf.Count, inf);
+        Unit_Movesleft.Insert(Unit_Movesleft.Count, movesleft);
+    }
+
     public void loadgame()
     {
+        //this creates two units eitherside of the castle
+        createunit("Unit 1", Blueposrow, BlueposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
+        createunit("Unit 2", Blueposrow, BlueposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
 
-        Map.Rows[Blueposrow].Cells[BlueposCell + 1].Value = Properties.Resources.TestSprite;
-        Map.Rows[Blueposrow].Cells[BlueposCell + 1].Tag = "Unit";
-
-        Unit_Names.Insert(Unit_Names.Count, "Unit 1");
-
-        Unit_Row.Insert(Unit_Row.Count, Blueposrow);
-        Unit_Cell.Insert(Unit_Cell.Count, BlueposCell + 1);
-        Unit_Lvl.Insert(Unit_Lvl.Count, 0);
-        Unit_Class.Insert(Unit_Class.Count, "Peasant");
-        Unit_Att.Insert(Unit_Att.Count, 2);
-        Unit_Def.Insert(Unit_Def.Count, 0);
-        UNit_Crit.Insert(UNit_Crit.Count, 1);
-        Unit_Dodge.Insert(Unit_Dodge.Count, 0);
-        Unit_MaxHealth.Insert(Unit_MaxHealth.Count, 25);
-        Unit_Health.Insert(Unit_Health.Count, 25);
-        Unit_Weapon.Insert(Unit_Weapon.Count, 0);
-        Unit_Armor.Insert(Unit_Armor.Count, 0);
-        Unit_Soul.Insert(Unit_Soul.Count, 0);
-        Unit_aff.Insert(Unit_aff.Count, "Blu");
-        Unit_inf.Insert(Unit_inf.Count, 1);
-        Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
-
-        Map.Rows[Blueposrow].Cells[BlueposCell - 1].Value = Properties.Resources.TestSprite;
-        Map.Rows[Blueposrow].Cells[BlueposCell - 1].Tag = "Unit";
-
-        Unit_Names.Insert(Unit_Names.Count, "Unit 2");
-        Unit_Row.Insert(Unit_Row.Count, Blueposrow);
-        Unit_Cell.Insert(Unit_Cell.Count, BlueposCell - 1);
-        Unit_Lvl.Insert(Unit_Lvl.Count, 0);
-        Unit_Class.Insert(Unit_Class.Count, "Peasant");
-        Unit_Att.Insert(Unit_Att.Count, 2);
-        Unit_Def.Insert(Unit_Def.Count, 0);
-        UNit_Crit.Insert(UNit_Crit.Count, 1);
-        Unit_Dodge.Insert(Unit_Dodge.Count, 0);
-        Unit_MaxHealth.Insert(Unit_MaxHealth.Count, 25);
-        Unit_Health.Insert(Unit_Health.Count, 25);
-        Unit_Weapon.Insert(Unit_Weapon.Count, 0);
-        Unit_Armor.Insert(Unit_Armor.Count, 0);
-        Unit_Soul.Insert(Unit_Soul.Count, 0);
-        Unit_aff.Insert(Unit_aff.Count, "Blu");
-        Unit_inf.Insert(Unit_inf.Count, 1);
-        Unit_Movesleft.Insert(Unit_Movesleft.Count, 2);
-
+        //this displays the amount of gold left, movesleft and production earned
         Gold_lbl.Text = Convert.ToString(gold);
         Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
         production.Text = Convert.ToString(productionval);
