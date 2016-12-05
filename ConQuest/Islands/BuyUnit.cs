@@ -17,5 +17,19 @@ namespace Islands
             InitializeComponent();
         }
 
+        private void BuyUnit_Btn_Click(object sender, EventArgs e)
+        {
+            if (Form1.productionval >= 10)
+            {
+                Form1.productionval = Form1.productionval - 10;
+                Form1.createunit("Unit " + Convert.ToString(Form1.Unit_Names.Count()) , Form1.Blueposrow, Form1.BlueposCell, 0, "Peasant", 2, 1, 1, 1, 25, 25, 0, 0, 0, "Blu", 1, 2);
+                Form1.updatevalues();
+            }
+            else
+            {
+                //write something that tells the user that they dont have enough production to complete the action here
+            }
+        }
+
     }
 }

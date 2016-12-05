@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
+//using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -23,18 +23,18 @@ namespace Islands //this is the namespace for the code, its still islands for no
 public partial class Form1 : Form //the first form
 {
 	//the horizontal position of the map
-	int mapsizehor = 100;
+    static int mapsizehor = 100;
 	//the vertical position of the map
-	int mapsizever = 100;
+    static int mapsizever = 100;
     //the amount of land and ocean tiles on the map
-    int landtiles = 0;
-    int oceeantiles = 0;
+    static int landtiles = 0;
+    static int oceeantiles = 0;
 
     //the positions of the blue castle, which is the player for now (to be updated).
-    int Blueposrow = 0;
-    int BlueposCell = 0;
+    public static int Blueposrow = 0;
+    public static int BlueposCell = 0;
     //this checks if the program was reloaded, without it many excess units are spawned.
-    int reload = 1;
+    static int reload = 1;
     //image for villages, obsolete.
     Icon Village_Unclaimed = Properties.Resources.Village_Unclaimed;
     //the randomizer
@@ -47,38 +47,38 @@ public partial class Form1 : Form //the first form
     //Unit variables. there is a lot.
 
     //Unit Assignment
-    List<string> Unit_Names = new List<string>();
-    List<int> Unit_Row = new List<int>();
-    List<int> Unit_Cell = new List<int>();
-    List<int> Unit_Lvl = new List<int>();
-    List<int> Unit_inf = new List<int>();
-    List<string> Unit_Class = new List<string>();
-    List<string> Unit_aff = new List<string>();
+    public static List<string> Unit_Names = new List<string>();
+    static List<int> Unit_Row = new List<int>();
+    static List<int> Unit_Cell = new List<int>();
+    static List<int> Unit_Lvl = new List<int>();
+    static List<int> Unit_inf = new List<int>();
+    static List<string> Unit_Class = new List<string>();
+    static List<string> Unit_aff = new List<string>();
     //unit number, it stores which unit is currently selected.
-    int unitnum = 0;
+    static int unitnum = 0;
     //Unit Permenant values
-    List<int> Unit_Att = new List<int>();
-    List<int> Unit_Def = new List<int>();
-    List<int> UNit_Crit = new List<int>();
-    List<int> Unit_Dodge = new List<int>();
+    static List<int> Unit_Att = new List<int>();
+    static List<int> Unit_Def = new List<int>();
+    static List<int> UNit_Crit = new List<int>();
+    static List<int> Unit_Dodge = new List<int>();
     //Unit Bonus values
-    List<int> Unit_Att_B = new List<int>();
-    List<int> Unit_Def_B = new List<int>();
-    List<int> UNit_Crit_B = new List<int>();
-    List<int> Unit_Dodge_B = new List<int>();
+    static List<int> Unit_Att_B = new List<int>();
+    static List<int> Unit_Def_B = new List<int>();
+    static List<int> UNit_Crit_B = new List<int>();
+    static List<int> Unit_Dodge_B = new List<int>();
     //Unit Equipment
-    List<int> Unit_Weapon = new List<int>();
-    List<int> Unit_Armor = new List<int>();
-    List<int> Unit_Soul = new List<int>();
+    static List<int> Unit_Weapon = new List<int>();
+    static List<int> Unit_Armor = new List<int>();
+    static List<int> Unit_Soul = new List<int>();
     //Unit stats
-    List<int> Unit_Health = new List<int>();
-    List<int> Unit_MaxHealth = new List<int>();
-    List<int> Unit_Movesleft = new List<int>(); //max is 2
+    static List<int> Unit_Health = new List<int>();
+    static List<int> Unit_MaxHealth = new List<int>();
+    static List<int> Unit_Movesleft = new List<int>(); //max is 2
 
-    int movesleftplayer = 10; //the movesleft for the player is 10 by default
-    int movesleftplayertotal = 10; //the maximum movesleft is also 10, but may be increased somehow? im thinking +1 per 10 tiers.
-    int productionval = 0; //the amount of production stored. increases by 1 each turn.
-    int gold = 0; //the amount of gold stored.
+    static int movesleftplayer = 10; //the movesleft for the player is 10 by default
+    static int movesleftplayertotal = 10; //the maximum movesleft is also 10, but may be increased somehow? im thinking +1 per 10 tiers.
+    public static int productionval = 0; //the amount of production stored. increases by 1 each turn.
+    public static int gold = 0; //the amount of gold stored.
 
     public Form1() //this initializes form 1
    { 
@@ -136,7 +136,7 @@ public partial class Form1 : Form //the first form
         minimap();
         layer3();
         loadgame();
-        this.Map.CurrentCell = this.Map[BlueposCell, Blueposrow]; //this moves the map view towards the blue castle
+        Map.CurrentCell = Map[BlueposCell, Blueposrow]; //this moves the map view towards the blue castle
         }
         else
         {
@@ -311,7 +311,7 @@ public partial class Form1 : Form //the first form
 
         Exitry2:
 
-		this.Map.CurrentCell = this.Map[i1y, i1x];
+		Map.CurrentCell = Map[i1y, i1x];
 	}
 
     public void layer3()
@@ -676,7 +676,7 @@ public partial class Form1 : Form //the first form
         }
     }
 
-    public void createunit(string name, int row, int cell, int lvl, string cls, int att, int def, int crit,int dodge, int Maxhp, int hp, int weapon, int armor, int soul, string aff, int inf, int movesleft)
+    public static void createunit(string name, int row, int cell, int lvl, string cls, int att, int def, int crit,int dodge, int Maxhp, int hp, int weapon, int armor, int soul, string aff, int inf, int movesleft)
     {
         //this takes values and creates a unit with them
         Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
@@ -699,6 +699,13 @@ public partial class Form1 : Form //the first form
         Unit_inf.Insert(Unit_inf.Count, inf);
         Unit_Movesleft.Insert(Unit_Movesleft.Count, movesleft);
     }
+    
+    public static void updatevalues()
+    {
+        Gold_lbl.Text = Convert.ToString(gold);
+        production.Text = Convert.ToString(productionval);
+        Movesleft.Text = Convert.ToString(movesleftplayer) + "/" + Convert.ToString(movesleftplayertotal);
+    }
 
     public void loadgame()
     {
@@ -707,9 +714,7 @@ public partial class Form1 : Form //the first form
         createunit("Unit 2", Blueposrow, BlueposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
 
         //this displays the amount of gold left, movesleft and production earned
-        Gold_lbl.Text = Convert.ToString(gold);
-        Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
-        production.Text = Convert.ToString(productionval);
+        updatevalues();
 
     }
      
@@ -773,7 +778,7 @@ public partial class Form1 : Form //the first form
 
                     movesleftplayer = movesleftplayer - 1;
 
-                    Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
+                    updatevalues();
 
                     SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[unitnum]);
 
@@ -854,9 +859,7 @@ public partial class Form1 : Form //the first form
         SUnit_Inf.Text = Convert.ToString(Unit_inf[Unit]);
         SUnit_MovesLeft.Text = Convert.ToString(Unit_Movesleft[Unit]);
 
-        Gold_lbl.Text = Convert.ToString(gold);
-        Movesleft.Text = movesleftplayer + "/" + movesleftplayertotal;
-        production.Text = Convert.ToString(productionval);
+        updatevalues();
 
         InUse.Visible = false;
         InUse.Text = "null";

@@ -60,6 +60,7 @@
             this.BuyUnit_Btn.TabIndex = 2;
             this.BuyUnit_Btn.Text = "Purchase";
             this.BuyUnit_Btn.UseVisualStyleBackColor = true;
+            this.BuyUnit_Btn.Click += new System.EventHandler(this.BuyUnit_Btn_Click);
             // 
             // Cost_lbl
             // 

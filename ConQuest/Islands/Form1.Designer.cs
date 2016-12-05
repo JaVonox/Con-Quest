@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.Map = new System.Windows.Forms.DataGridView();
+            Map = new System.Windows.Forms.DataGridView();
             this.InUse_lbl = new System.Windows.Forms.DataGridView();
             this.Menu_Un = new System.Windows.Forms.PictureBox();
             this.THEALLSEEINGEYE = new System.Windows.Forms.Button();
@@ -66,9 +66,9 @@
             this.SUnit_Class = new System.Windows.Forms.Label();
             this.TopMenu = new System.Windows.Forms.PictureBox();
             this.Gold_Img = new System.Windows.Forms.PictureBox();
-            this.Gold_lbl = new System.Windows.Forms.Label();
+            Gold_lbl = new System.Windows.Forms.Label();
             this.Movesleft_img = new System.Windows.Forms.PictureBox();
-            this.Movesleft = new System.Windows.Forms.Label();
+            Movesleft = new System.Windows.Forms.Label();
             this.SUnit_aff = new System.Windows.Forms.Label();
             this.Influence_img = new System.Windows.Forms.PictureBox();
             this.SUnit_Inf = new System.Windows.Forms.Label();
@@ -76,11 +76,11 @@
             this.Debug = new System.Windows.Forms.Label();
             this.SUnit_MovesLeft = new System.Windows.Forms.Label();
             this.Production_img = new System.Windows.Forms.PictureBox();
-            this.production = new System.Windows.Forms.Label();
+            production = new System.Windows.Forms.Label();
             this.Shop_btn = new System.Windows.Forms.Button();
             this.Armory_Btn = new System.Windows.Forms.Button();
             this.InUse = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.Map)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(Map)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InUse_lbl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Image)).BeginInit();
@@ -104,29 +104,29 @@
             // 
             // Map
             // 
-            this.Map.AllowUserToAddRows = false;
-            this.Map.AllowUserToDeleteRows = false;
-            this.Map.AllowUserToResizeColumns = false;
-            this.Map.AllowUserToResizeRows = false;
-            this.Map.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            Map.AllowUserToAddRows = false;
+            Map.AllowUserToDeleteRows = false;
+            Map.AllowUserToResizeColumns = false;
+            Map.AllowUserToResizeRows = false;
+            Map.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Map.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.Map.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.Map.ColumnHeadersVisible = false;
-            this.Map.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.Map.GridColor = System.Drawing.Color.White;
-            this.Map.Location = new System.Drawing.Point(1, -31);
-            this.Map.Name = "Map";
-            this.Map.ReadOnly = true;
-            this.Map.RowHeadersVisible = false;
-            this.Map.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Map.ShowEditingIcon = false;
-            this.Map.Size = new System.Drawing.Size(1271, 578);
-            this.Map.TabIndex = 1;
-            this.Map.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellClick);
-            this.Map.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellContentClick);
-            this.Map.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.Map_CellMouseEnter);
+            Map.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            Map.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            Map.ColumnHeadersVisible = false;
+            Map.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            Map.GridColor = System.Drawing.Color.White;
+            Map.Location = new System.Drawing.Point(1, -31);
+            Map.Name = "Map";
+            Map.ReadOnly = true;
+            Map.RowHeadersVisible = false;
+            Map.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            Map.ShowEditingIcon = false;
+            Map.Size = new System.Drawing.Size(1271, 578);
+            Map.TabIndex = 1;
+            Map.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(Map_CellClick);
+            Map.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(Map_CellContentClick);
+            Map.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(Map_CellMouseEnter);
             // 
             // InUse_lbl
             // 
@@ -457,12 +457,12 @@
             // 
             // Gold_lbl
             // 
-            this.Gold_lbl.AutoSize = true;
-            this.Gold_lbl.Location = new System.Drawing.Point(44, 13);
-            this.Gold_lbl.Name = "Gold_lbl";
-            this.Gold_lbl.Size = new System.Drawing.Size(35, 13);
-            this.Gold_lbl.TabIndex = 41;
-            this.Gold_lbl.Text = "label1";
+            Gold_lbl.AutoSize = true;
+            Gold_lbl.Location = new System.Drawing.Point(44, 13);
+            Gold_lbl.Name = "Gold_lbl";
+            Gold_lbl.Size = new System.Drawing.Size(35, 13);
+            Gold_lbl.TabIndex = 41;
+            Gold_lbl.Text = "label1";
             // 
             // Movesleft_img
             // 
@@ -475,12 +475,12 @@
             // 
             // Movesleft
             // 
-            this.Movesleft.AutoSize = true;
-            this.Movesleft.Location = new System.Drawing.Point(148, 13);
-            this.Movesleft.Name = "Movesleft";
-            this.Movesleft.Size = new System.Drawing.Size(35, 13);
-            this.Movesleft.TabIndex = 43;
-            this.Movesleft.Text = "label1";
+            Movesleft.AutoSize = true;
+            Movesleft.Location = new System.Drawing.Point(148, 13);
+            Movesleft.Name = "Movesleft";
+            Movesleft.Size = new System.Drawing.Size(35, 13);
+            Movesleft.TabIndex = 43;
+            Movesleft.Text = "label1";
             // 
             // SUnit_aff
             // 
@@ -547,12 +547,12 @@
             // 
             // production
             // 
-            this.production.AutoSize = true;
-            this.production.Location = new System.Drawing.Point(249, 13);
-            this.production.Name = "production";
-            this.production.Size = new System.Drawing.Size(35, 13);
-            this.production.TabIndex = 51;
-            this.production.Text = "label1";
+            production.AutoSize = true;
+            production.Location = new System.Drawing.Point(249, 13);
+            production.Name = "production";
+            production.Size = new System.Drawing.Size(35, 13);
+            production.TabIndex = 51;
+            production.Text = "label1";
             // 
             // Shop_btn
             // 
@@ -593,7 +593,7 @@
             this.Controls.Add(this.InUse);
             this.Controls.Add(this.Armory_Btn);
             this.Controls.Add(this.Shop_btn);
-            this.Controls.Add(this.production);
+            this.Controls.Add(production);
             this.Controls.Add(this.Production_img);
             this.Controls.Add(this.SUnit_MovesLeft);
             this.Controls.Add(this.Debug);
@@ -601,9 +601,9 @@
             this.Controls.Add(this.SUnit_Inf);
             this.Controls.Add(this.Influence_img);
             this.Controls.Add(this.SUnit_aff);
-            this.Controls.Add(this.Movesleft);
+            this.Controls.Add(Movesleft);
             this.Controls.Add(this.Movesleft_img);
-            this.Controls.Add(this.Gold_lbl);
+            this.Controls.Add(Gold_lbl);
             this.Controls.Add(this.Gold_Img);
             this.Controls.Add(this.TopMenu);
             this.Controls.Add(this.SUnit_Class);
@@ -640,14 +640,14 @@
             this.Controls.Add(this.THEALLSEEINGEYE);
             this.Controls.Add(this.Menu_Un);
             this.Controls.Add(this.InUse_lbl);
-            this.Controls.Add(this.Map);
+            this.Controls.Add(Map);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "MAP";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Map)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(Map)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InUse_lbl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SUnit_Image)).EndInit();
@@ -674,7 +674,7 @@
 
         #endregion
 
-        internal System.Windows.Forms.DataGridView Map;
+        internal static System.Windows.Forms.DataGridView Map;
         private System.Windows.Forms.DataGridView InUse_lbl;
         private System.Windows.Forms.PictureBox Menu_Un;
         private System.Windows.Forms.Button THEALLSEEINGEYE;
@@ -711,9 +711,9 @@
         private System.Windows.Forms.Label SUnit_Class;
         private System.Windows.Forms.PictureBox TopMenu;
         private System.Windows.Forms.PictureBox Gold_Img;
-        private System.Windows.Forms.Label Gold_lbl;
+        public static System.Windows.Forms.Label Gold_lbl;
         private System.Windows.Forms.PictureBox Movesleft_img;
-        private System.Windows.Forms.Label Movesleft;
+        public static System.Windows.Forms.Label Movesleft;
         private System.Windows.Forms.Label SUnit_aff;
         private System.Windows.Forms.PictureBox Influence_img;
         private System.Windows.Forms.Label SUnit_Inf;
@@ -721,7 +721,7 @@
         private System.Windows.Forms.Label Debug;
         private System.Windows.Forms.Label SUnit_MovesLeft;
         private System.Windows.Forms.PictureBox Production_img;
-        private System.Windows.Forms.Label production;
+        public static System.Windows.Forms.Label production;
         private System.Windows.Forms.Button Shop_btn;
         private System.Windows.Forms.Button Armory_Btn;
         private System.Windows.Forms.Label InUse;
