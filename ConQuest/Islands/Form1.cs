@@ -34,7 +34,7 @@ public partial class Form1 : Form //the first form
     public static int Blueposrow = 0;
     public static int BlueposCell = 0;
     //this checks if the program was reloaded, without it many excess units are spawned.
-    static int reload = 1;
+    static int reload = 0;
     //image for villages, obsolete.
     Icon Village_Unclaimed = Properties.Resources.Village_Unclaimed;
     //the randomizer
@@ -140,7 +140,7 @@ public partial class Form1 : Form //the first form
         }
         else
         {
-            reload = 1; //if the map is not good, it forces a reload.
+            reload = 0; //if the map is not good, it forces a reload.
         }
 	}
 
@@ -309,9 +309,9 @@ public partial class Form1 : Form //the first form
 			goto Exitry2; 
 		}
 
-        Exitry2:
+    Exitry2:
 
-		Map.CurrentCell = Map[i1y, i1x];
+        Console.WriteLine("cont generated");
 	}
 
     public void layer3()
@@ -580,6 +580,8 @@ public partial class Form1 : Form //the first form
                     i = i - 1;
                 }
             }
+
+            reload = 1;
         }
         else
         {
@@ -589,6 +591,7 @@ public partial class Form1 : Form //the first form
             oceeantiles = 0;
             reload = 0;
             Form1_Load("MAP", new System.EventArgs()); //this reloads form1 so it can be regenerated
+            reload = 0;
         }
     }
 
@@ -669,10 +672,12 @@ public partial class Form1 : Form //the first form
         if(InUse_lbl.Visible == false)
         {
             InUse_lbl.Visible = true;
+            MessageBox_LB.Visible = true;
         }
         else
         {
             InUse_lbl.Visible = false;
+            MessageBox_LB.Visible = false;
         }
     }
 

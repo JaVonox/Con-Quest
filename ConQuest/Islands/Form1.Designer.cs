@@ -80,6 +80,7 @@
             this.Shop_btn = new System.Windows.Forms.Button();
             this.Armory_Btn = new System.Windows.Forms.Button();
             this.InUse = new System.Windows.Forms.Label();
+            this.MessageBox_LB = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(Map)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InUse_lbl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Menu_Un)).BeginInit();
@@ -585,11 +586,21 @@
             this.InUse.Text = "In use:";
             this.InUse.Visible = false;
             // 
+            // MessageBox_LB
+            // 
+            this.MessageBox_LB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MessageBox_LB.FormattingEnabled = true;
+            this.MessageBox_LB.Location = new System.Drawing.Point(952, -1);
+            this.MessageBox_LB.Name = "MessageBox_LB";
+            this.MessageBox_LB.Size = new System.Drawing.Size(320, 95);
+            this.MessageBox_LB.TabIndex = 56;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 729);
+            this.Controls.Add(this.MessageBox_LB);
             this.Controls.Add(this.InUse);
             this.Controls.Add(this.Armory_Btn);
             this.Controls.Add(this.Shop_btn);
@@ -674,7 +685,6 @@
 
         #endregion
 
-        internal static System.Windows.Forms.DataGridView Map;
         private System.Windows.Forms.DataGridView InUse_lbl;
         private System.Windows.Forms.PictureBox Menu_Un;
         private System.Windows.Forms.Button THEALLSEEINGEYE;
@@ -711,9 +721,7 @@
         private System.Windows.Forms.Label SUnit_Class;
         private System.Windows.Forms.PictureBox TopMenu;
         private System.Windows.Forms.PictureBox Gold_Img;
-        public static System.Windows.Forms.Label Gold_lbl;
         private System.Windows.Forms.PictureBox Movesleft_img;
-        public static System.Windows.Forms.Label Movesleft;
         private System.Windows.Forms.Label SUnit_aff;
         private System.Windows.Forms.PictureBox Influence_img;
         private System.Windows.Forms.Label SUnit_Inf;
@@ -721,10 +729,14 @@
         private System.Windows.Forms.Label Debug;
         private System.Windows.Forms.Label SUnit_MovesLeft;
         private System.Windows.Forms.PictureBox Production_img;
-        public static System.Windows.Forms.Label production;
         private System.Windows.Forms.Button Shop_btn;
         private System.Windows.Forms.Button Armory_Btn;
         private System.Windows.Forms.Label InUse;
+        private System.Windows.Forms.ListBox MessageBox_LB;
+        public static System.Windows.Forms.DataGridView Map;
+        public static System.Windows.Forms.Label Gold_lbl;
+        public static System.Windows.Forms.Label Movesleft;
+        public static System.Windows.Forms.Label production;
 
     }
 }
