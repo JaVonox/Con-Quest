@@ -51,6 +51,7 @@ public partial class Form1 : Form //the first form
     static List<int> Unit_Row = new List<int>();
     static List<int> Unit_Cell = new List<int>();
     static List<int> Unit_Lvl = new List<int>();
+    static List<int> Unit_Exp = new List<int>();
     static List<int> Unit_inf = new List<int>();
     static List<string> Unit_Class = new List<string>();
     static List<string> Unit_aff = new List<string>();
@@ -74,6 +75,21 @@ public partial class Form1 : Form //the first form
     static List<int> Unit_Health = new List<int>();
     static List<int> Unit_MaxHealth = new List<int>();
     static List<int> Unit_Movesleft = new List<int>(); //max is 2
+
+
+    //villages and other conquerable locations
+    static List<string> Cl_Name = new List<string>();
+    static List<string> Cl_Class = new List<string>();
+    static List<int> Cl_row = new List<int>();
+    static List<int> Cl_cell = new List<int>();
+    static List<string> Cl_Type_Use = new List<string>();
+    static List<int> Cl_ReqInf = new List<int>();
+    static List<int> Cl_BluInf = new List<int>();
+    static List<int> Cl_RedInf = new List<int>();
+    static List<int> Cl_GrnInf = new List<int>();
+    static List<int> Cl_QuestTurns = new List<int>();
+    static List<int> Cl_Questid = new List<int>();
+    static List<int> Cl_Cooldown = new List<int>();
 
     static int movesleftplayer = 10; //the movesleft for the player is 10 by default
     static int movesleftplayertotal = 10; //the maximum movesleft is also 10, but may be increased somehow? im thinking +1 per 10 tiers.
@@ -413,6 +429,34 @@ public partial class Form1 : Form //the first form
                 if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
                 {
                     Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.Peru;
+
+                    //this adds villages to the capturable locations list
+
+                    Cl_Name.Insert(i, Convert.ToString(i));
+
+                    Cl_Class.Insert(i, "Village");
+
+
+                    Cl_row.Insert(i, rand2);
+                    Cl_cell.Insert(i, rand1);
+
+                    if(randomizar.Next(1,3) == 1)
+                    {
+                        Cl_Type_Use.Insert(i, "Shop");
+                    }
+                    else
+                    {
+                        Cl_Type_Use.Insert(i, "Armory");
+                    }
+
+                    Cl_ReqInf.Insert(i, 10);
+                    Cl_BluInf.Insert(i, 0);
+                    Cl_RedInf.Insert(i, 0);
+                    Cl_GrnInf.Insert(i, 0);
+
+                    Cl_QuestTurns.Insert(i, 0);
+                    Cl_Questid.Insert(i, randomizar.Next(1,255));
+                    Cl_Cooldown.Insert(i, 0);
                 }
                 else
                 {
@@ -618,7 +662,31 @@ public partial class Form1 : Form //the first form
                 }
                 else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.Peru)
                 {
-                    Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
+                    //find at instead of for
+                    for (int i = 0; i <= Cl_BluInf.Count() - 1; i++)
+                    {
+                        if (Cl_BluInf[i] >= Cl_ReqInf[i] && Cl_BluInf[i] > Cl_RedInf[i] && Cl_BluInf[i] > Cl_GrnInf[i])
+                        {
+                                Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Blue;
+                                i = Cl_BluInf.Count() - 1;
+                        }
+                        else if (Cl_RedInf[i] >= Cl_ReqInf[i] && Cl_RedInf[i] > Cl_RedInf[i] && Cl_RedInf[i] > Cl_GrnInf[i])
+                        {
+                                Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Red;
+                                i = Cl_BluInf.Count() - 1;
+
+                        }
+                        else if (Cl_GrnInf[i] >= Cl_ReqInf[i] && Cl_GrnInf[i] > Cl_RedInf[i] && Cl_GrnInf[i] > Cl_GrnInf[i])
+                        {
+                                Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Green;
+                                i = Cl_BluInf.Count() - 1;
+                        }
+                        else
+                        {
+                            Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
+                        }
+                    }
+
                 }
                 else if (Map.Rows[row].Cells[cell].Style.BackColor == Color.SaddleBrown)
                 {
@@ -690,6 +758,7 @@ public partial class Form1 : Form //the first form
         Unit_Row.Insert(Unit_Row.Count, row);
         Unit_Cell.Insert(Unit_Cell.Count, cell);
         Unit_Lvl.Insert(Unit_Lvl.Count, lvl);
+        Unit_Exp.Insert(Unit_Exp.Count, 0);
         Unit_Class.Insert(Unit_Class.Count, cls);
         Unit_Att.Insert(Unit_Att.Count, att);
         Unit_Def.Insert(Unit_Def.Count, def);
@@ -725,6 +794,12 @@ public partial class Form1 : Form //the first form
      
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
     {
+        InUse.Visible = false;
+        InUse.Text = "in use:";
+        Shop_btn.Visible = false;
+        Armory_Btn.Visible = false;
+        Shop_btn.Enabled = false;
+        Armory_Btn.Enabled = false;
 
         if (Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LightBlue)
         {
@@ -769,8 +844,45 @@ public partial class Form1 : Form //the first form
                     Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag = "Unit";
                     Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
 
+                    for (int i = 0; i <= Cl_row.Count() - 1; i++ )
+                    {
+                        if(Cl_row[i] == e.RowIndex)
+                        {
+                            if(Cl_cell[i] ==  e.ColumnIndex)
+                            {
+                                
+                if(Cl_BluInf[i] >= Cl_ReqInf[i] && Cl_BluInf[i] > Cl_RedInf[i] && Cl_BluInf[i] > Cl_GrnInf[i])
+                {
+                    //change this to incorporate other player types later
+                                InUse.Visible = true;
+                                InUse.Text = "in use: Village " + Cl_Name[i];
+                                Shop_btn.Visible = true;
+                                Armory_Btn.Visible = true;
+                                if(Cl_Type_Use[i] == "Shop")
+                                {
+                                    Shop_btn.Enabled = true;
+                                }
+                                else if (Cl_Type_Use[i] == "Armory")
+                                {
+                                    Armory_Btn.Enabled = true;
+                                }
+                }
 
-                    Unit_Row.RemoveAt(unitnum);
+            if (Cl_RedInf[i] >=Cl_ReqInf[i] && Cl_RedInf[i] > Cl_RedInf[i] && Cl_RedInf[i] > Cl_GrnInf[i])
+            {
+                    Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Red;
+
+            }
+
+            if (Cl_GrnInf[i] >= Cl_ReqInf[i] && Cl_GrnInf[i] > Cl_RedInf[i] && Cl_GrnInf[i] > Cl_GrnInf[i])
+            {
+                    Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Green;
+            }
+                            }
+                        }
+                    }
+
+                        Unit_Row.RemoveAt(unitnum);
                     Unit_Row.Insert(unitnum, e.RowIndex);
 
                     Unit_Cell.RemoveAt(unitnum);
@@ -1153,10 +1265,82 @@ public partial class Form1 : Form //the first form
     {
         //would have AI code go here, but i havent coded it yet.
 
-        for (int i = 0; i < Unit_Names.Count(); i++)
+        for (int i = 0; i <= Unit_Names.Count() - 1; i++)
         {
-            Unit_Movesleft[i] = 2;
+            for (int m = 0; m <= Cl_Name.Count() - 1; m++)
+            {
+                if (Unit_Row[i] == Cl_row[m])
+                {
+                    if (Unit_Cell[i] == Cl_cell[m])
+                    {
+                        if (Unit_aff[i] == "Blu")
+                        {
+                            int temp = Convert.ToInt32(Cl_BluInf[m]);
+                            Cl_BluInf.RemoveAt(m);
+                            Cl_BluInf.Insert(m, Convert.ToInt32(temp + Unit_inf[i]));
+                        }
+
+                        if (Unit_aff[i] == "Red")
+                        {
+                            int temp = Convert.ToInt32(Cl_RedInf[m]);
+                            Cl_RedInf.RemoveAt(m);
+                            Cl_RedInf.Insert(m, Convert.ToInt32(temp + Unit_inf[i]));
+                        }
+
+                        if (Unit_aff[i] == "Grn")
+                        {
+                            int temp = Convert.ToInt32(Cl_GrnInf[m]);
+                            Cl_GrnInf.RemoveAt(m);
+                            Cl_GrnInf.Insert(m, Convert.ToInt32(temp + Unit_inf[i]));
+                        }
+                    }
+                }
+
+            if(Cl_BluInf[m] >= Cl_ReqInf[m] && Cl_BluInf[m] > Cl_RedInf[m] && Cl_BluInf[m] > Cl_GrnInf[m])
+                {
+                    if (Map.Rows[Cl_row[m]].Cells[Cl_cell[m]].Tag == "Unit")
+                    {
+
+                    }
+                    else
+                    {
+                        Map.Rows[Cl_row[m]].Cells[Cl_cell[m]].Value = Properties.Resources.Village_Blue;
+                    }
+                }
+
+            if (Cl_RedInf[m] >=Cl_ReqInf[m] && Cl_RedInf[m] > Cl_RedInf[m] && Cl_RedInf[m] > Cl_GrnInf[m])
+            {
+                if (Map.Rows[Cl_row[m]].Cells[Cl_cell[m]].Tag == "Unit")
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Cl_row[m]].Cells[Cl_cell[m]].Value = Properties.Resources.Village_Red;
+                }
+
+            }
+
+            if (Cl_GrnInf[m] >= Cl_ReqInf[m] && Cl_GrnInf[m] > Cl_RedInf[m] && Cl_GrnInf[m] > Cl_GrnInf[m])
+            {
+                if (Map.Rows[Cl_row[m]].Cells[Cl_cell[m]].Tag == "Unit")
+                {
+
+                }
+                else
+                {
+                    Map.Rows[Cl_row[m]].Cells[Cl_cell[m]].Value = Properties.Resources.Village_Green;
+                }
+            }
+
+            }
+
         }
+
+            for (int i = 0; i < Unit_Names.Count(); i++)
+            {
+                Unit_Movesleft[i] = 2;
+            }
 
         productionval = productionval + 1;
         movesleftplayer = movesleftplayertotal;
