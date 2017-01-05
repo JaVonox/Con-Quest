@@ -1,3 +1,5 @@
+Note : Project currently on hiatus while i finish up my coursework and prepare for exams. 
+
 # ConQuest
 
 Please note that this project is (currently) very early in development, and many of the features included in this document may undergo drastic changes, as well as potentially being removed from the project as a whole. thank you!
