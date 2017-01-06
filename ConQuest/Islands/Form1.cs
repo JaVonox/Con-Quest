@@ -29,10 +29,25 @@ public partial class Form1 : Form //the first form
     //the amount of land and ocean tiles on the map
     static int landtiles = 0;
     static int oceeantiles = 0;
+    static int turnnum = 1;
+    public static int indexsender = -1; // this is for armory things
+    public static string team = "Blu";
+    //dates
+    //a year is 9 months
+    static int yearnum = 643;
+    static int Seasonyear = 3;
+    //a month is 6 weeks
+    static int monthnum = 3;
+    //a week is one turn
+    static int weeknum = 1;
 
-    //the positions of the blue castle, which is the player for now (to be updated).
+    //the positions of the castles
     public static int Blueposrow = 0;
     public static int BlueposCell = 0;
+    public static int Redposrow = 0;
+    public static int RedposCell = 0;
+    public static int Grnposrow = 0;
+    public static int GrnposCell = 0;
     //this checks if the program was reloaded, without it many excess units are spawned.
     static int reload = 0;
     //image for villages, obsolete.
@@ -80,8 +95,8 @@ public partial class Form1 : Form //the first form
     //villages and other conquerable locations
     static List<string> Cl_Name = new List<string>();
     static List<string> Cl_Class = new List<string>();
-    static List<int> Cl_row = new List<int>();
-    static List<int> Cl_cell = new List<int>();
+    static public List<int> Cl_row = new List<int>();
+    static public List<int> Cl_cell = new List<int>();
     static List<string> Cl_Type_Use = new List<string>();
     static List<int> Cl_ReqInf = new List<int>();
     static List<int> Cl_BluInf = new List<int>();
@@ -557,6 +572,8 @@ public partial class Form1 : Form //the first form
                 if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
                 {
                     Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.Red;
+                    Redposrow = rand2;
+                    RedposCell = rand1;
                 }
                 else
                 {
@@ -597,6 +614,8 @@ public partial class Form1 : Form //the first form
                 if (Map.Rows[rand2].Cells[rand1].Style.BackColor.Equals(Color.Green))
                 {
                     Map.Rows[rand2].Cells[rand1].Style.BackColor = Color.ForestGreen;
+                    Grnposrow = rand2;
+                    GrnposCell = rand1;
                 }
                 else
                 {
@@ -667,23 +686,51 @@ public partial class Form1 : Form //the first form
                     {
                         if (Cl_BluInf[i] >= Cl_ReqInf[i] && Cl_BluInf[i] > Cl_RedInf[i] && Cl_BluInf[i] > Cl_GrnInf[i])
                         {
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            {
+
+                            }
+                            else
+                            {
                                 Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Blue;
                                 i = Cl_BluInf.Count() - 1;
+                            }
                         }
                         else if (Cl_RedInf[i] >= Cl_ReqInf[i] && Cl_RedInf[i] > Cl_RedInf[i] && Cl_RedInf[i] > Cl_GrnInf[i])
                         {
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            {
+
+                            }
+                            else
+                            {
                                 Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Red;
                                 i = Cl_BluInf.Count() - 1;
+                            }
 
                         }
                         else if (Cl_GrnInf[i] >= Cl_ReqInf[i] && Cl_GrnInf[i] > Cl_RedInf[i] && Cl_GrnInf[i] > Cl_GrnInf[i])
                         {
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            {
+
+                            }
+                            else
+                            {
                                 Map.Rows[Cl_row[i]].Cells[Cl_cell[i]].Value = Properties.Resources.Village_Green;
                                 i = Cl_BluInf.Count() - 1;
+                            }
                         }
                         else
                         {
-                            Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            {
+
+                            }
+                            else
+                            {
+                                Map.Rows[row].Cells[cell].Value = Properties.Resources.Village_Unclaimed1;
+                            }
                         }
                     }
 
@@ -787,15 +834,21 @@ public partial class Form1 : Form //the first form
         createunit("Unit 1", Blueposrow, BlueposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
         createunit("Unit 2", Blueposrow, BlueposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
 
+        createunit("Unit 1", Redposrow, RedposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Red", 1, 2);
+        createunit("Unit 2", Redposrow, RedposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Red", 1, 2);
+
+        createunit("Unit 1", Grnposrow, GrnposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Grn", 1, 2);
+        createunit("Unit 2", Grnposrow, GrnposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Grn", 1, 2);
         //this displays the amount of gold left, movesleft and production earned
         updatevalues();
-
+        calcyear();
     }
      
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         InUse.Visible = false;
         InUse.Text = "in use:";
+        indexsender = -1;
         Shop_btn.Visible = false;
         Armory_Btn.Visible = false;
         Shop_btn.Enabled = false;
@@ -805,12 +858,40 @@ public partial class Form1 : Form //the first form
         {
             InUse.Visible = true;
             InUse.Text = "Castle";
+            indexsender = 0;
             Shop_btn.Visible = true;
             Shop_btn.Enabled = false;
             Armory_Btn.Visible = true;
             Armory_Btn.Enabled = true;
         }
 
+        //bugged
+        for (int i = 0;i <= Cl_row.Count() - 1; i++)
+        {
+            if (e.RowIndex == Convert.ToInt32(Cl_row[i]))
+            {
+                if (e.ColumnIndex == Cl_cell[i])
+                {
+                    if (Cl_BluInf[i] >= Cl_ReqInf[i] && Cl_BluInf[i] > Cl_RedInf[i] && Cl_BluInf[i] > Cl_GrnInf[i])
+                    {
+                        //change this to incorporate other player types later
+                        InUse.Visible = true;
+                        InUse.Text = "in use: Village " + Cl_Name[i];
+                        indexsender = i;
+                        Shop_btn.Visible = true;
+                        Armory_Btn.Visible = true;
+                        if (Cl_Type_Use[i] == "Shop")
+                        {
+                            Shop_btn.Enabled = false;
+                        }
+                        else if (Cl_Type_Use[i] == "Armory")
+                        {
+                            Armory_Btn.Enabled = true;
+                        }
+                    }
+                }
+            }
+        }
         if (movemode == true)
         {
 
@@ -818,9 +899,6 @@ public partial class Form1 : Form //the first form
             {
                 if (Unit_Movesleft[unitnum] > 0 && movesleftplayer > 0)
                 {
-                    // A LOT OF BUGS HERE
-                    // So for some reason, when you move a unit then switch units, you cant reuse the first unit
-                    //the unit generator is duplicating units for some reason
 
                     Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Tag = null;
 
@@ -856,6 +934,7 @@ public partial class Form1 : Form //the first form
                     //change this to incorporate other player types later
                                 InUse.Visible = true;
                                 InUse.Text = "in use: Village " + Cl_Name[i];
+                                indexsender = i;
                                 Shop_btn.Visible = true;
                                 Armory_Btn.Visible = true;
                                 if(Cl_Type_Use[i] == "Shop")
@@ -864,7 +943,7 @@ public partial class Form1 : Form //the first form
                                 }
                                 else if (Cl_Type_Use[i] == "Armory")
                                 {
-                                    Armory_Btn.Enabled = true;
+                                    Armory_Btn.Enabled = false;
                                 }
                 }
 
@@ -1251,9 +1330,13 @@ public partial class Form1 : Form //the first form
 
         private void SUnit_Move_Click(object sender, EventArgs e)
     {
-        Displaymove();
+        if(SUnit_aff.Text == team)
+        {
+            Displaymove();
 
-        movemode = true;
+            movemode = true;
+        }
+
     }
 
     private void Map_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -1261,9 +1344,125 @@ public partial class Form1 : Form //the first form
         Debug.Text = Convert.ToString(Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag);
     }
 
+    public void calcyear()
+    {
+
+        MessageBox_LB.Items.Clear();
+
+        turnnum = turnnum + 1;
+        weeknum = weeknum + 1;
+
+        string tempyears = "N/A";
+        string tempmonth = "N/A";
+
+        if (weeknum > 6)
+        {
+            monthnum = monthnum + 1;
+            weeknum = 1;
+            if (monthnum > 9)
+            {
+                yearnum = yearnum + 1;
+                monthnum = 1;
+                Seasonyear = Seasonyear + 1;
+
+                if (Seasonyear > 4)
+                {
+                    Seasonyear = 1;
+                }
+            }
+        }
+
+
+
+        if (Seasonyear == 1)
+        {
+            tempyears = "Eltveim";
+        }
+        else if (Seasonyear == 2)
+        {
+            tempyears = "Somell";
+        }
+        else if (Seasonyear == 3)
+        {
+            tempyears = "Odecem";
+        }
+        else if (Seasonyear == 4)
+        {
+            tempyears = "Ilao";
+        }
+        else
+        {
+            tempyears = "N/A";
+        }
+
+        if (monthnum == 1)
+        {
+            tempmonth = "Solvil";
+        }
+        else if (monthnum == 2)
+        {
+            tempmonth = "Eberi";
+        }
+        else if (monthnum == 3)
+        {
+            tempmonth = "Omni";
+        }
+        else if (monthnum == 4)
+        {
+            tempmonth = "Cayvlii";
+        }
+        else if (monthnum == 5)
+        {
+            tempmonth = "Vylic";
+        }
+        else if (monthnum == 6)
+        {
+            tempmonth = "Hylioum";
+        }
+        else if (monthnum == 7)
+        {
+            tempmonth = "Stomm";
+        }
+        else if (monthnum == 8)
+        {
+            tempmonth = "Malvom";
+        }
+        else if (monthnum == 9)
+        {
+            tempmonth = "Qer";
+        }
+
+        //MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Week " + weeknum + " Of " + tempmonth + ", " + yearnum);
+        MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, weeknum + "/" + monthnum + "/" + yearnum + " (" + tempyears + ")");
+        MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "-------------------------");
+
+        if(weeknum == 6 && monthnum == 9)
+        {
+            //tempyears = "Eltveim";
+            //tempyears = "Somell";
+
+            //tempyears = "Odecem";
+
+            //tempyears = "Ilao";
+
+            //obvel
+
+            if(Seasonyear == 1)
+            {
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Its midnight. You are awoken suddenly to the sound of shouts, not shouts of anger but rather of joy.");
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Shouts that tell all who hear them that the cold year, Ilao, has passed.");
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Celebrations break out like a plague across the lands as an act of mockery against the frigid year");
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Mayors stand on stages, rattling off long scripts about policies and laws, fully aware that noone is listening");
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Fireworks //");
+            }
+        }
+    }
+
     private void NextTurn_Click(object sender, EventArgs e)
     {
         //would have AI code go here, but i havent coded it yet.
+
+        calcyear();
 
         for (int i = 0; i <= Unit_Names.Count() - 1; i++)
         {
@@ -1278,6 +1477,7 @@ public partial class Form1 : Form //the first form
                             int temp = Convert.ToInt32(Cl_BluInf[m]);
                             Cl_BluInf.RemoveAt(m);
                             Cl_BluInf.Insert(m, Convert.ToInt32(temp + Unit_inf[i]));
+                            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Blue House's influence in Village " + Cl_Name[m] + " Increased to " + Cl_BluInf[m] + " Out of " + Cl_ReqInf[m]);
                         }
 
                         if (Unit_aff[i] == "Red")
@@ -1285,6 +1485,7 @@ public partial class Form1 : Form //the first form
                             int temp = Convert.ToInt32(Cl_RedInf[m]);
                             Cl_RedInf.RemoveAt(m);
                             Cl_RedInf.Insert(m, Convert.ToInt32(temp + Unit_inf[i]));
+                            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Red House's influence in Village " + Cl_Name[m] + " Increased to " + Cl_RedInf[m] + " Out of " + Cl_ReqInf[m]);
                         }
 
                         if (Unit_aff[i] == "Grn")
@@ -1292,6 +1493,7 @@ public partial class Form1 : Form //the first form
                             int temp = Convert.ToInt32(Cl_GrnInf[m]);
                             Cl_GrnInf.RemoveAt(m);
                             Cl_GrnInf.Insert(m, Convert.ToInt32(temp + Unit_inf[i]));
+                            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Green House's influence in Village " + Cl_Name[m] + " Increased to " + Cl_GrnInf[m] + " Out of " + Cl_ReqInf[m]);
                         }
                     }
                 }
@@ -1340,6 +1542,7 @@ public partial class Form1 : Form //the first form
             for (int i = 0; i < Unit_Names.Count(); i++)
             {
                 Unit_Movesleft[i] = 2;
+                Map.Rows[Unit_Row[i]].Cells[Unit_Cell[i]].Value = Properties.Resources.TestSprite;
             }
 
         productionval = productionval + 1;
