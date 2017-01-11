@@ -34,11 +34,11 @@ namespace Islands
                     }
                     else if (Form1.indexsender == 0)
                     {
-                        Form1.createunit("Unit " + Convert.ToString(Form1.Unit_Names.Count() + 1), Form1.Blueposrow, Form1.BlueposCell, 0, "Peasant", 2, 1, 1, 1, 25, 25, 0, 0, 0, "Blu", 1, 2);
+                        Form1.createunit("Unit " + Convert.ToString(Form1.Unit_Names.Count() + 1), Form1.Blueposrow, Form1.BlueposCell, 1, "Peasant", 2, 1, 1, 1, 25, 25, 0, 0, 0, "Blu", 1, 2);
                     }
                     else
                     {
-                        Form1.createunit("Unit " + Convert.ToString(Form1.Unit_Names.Count() + 1), Form1.Cl_row[Form1.indexsender], Form1.Cl_cell[Form1.indexsender], 0, "Peasant", 2, 1, 1, 1, 25, 25, 0, 0, 0, "Blu", 1, 2);
+                        Form1.createunit("Unit " + Convert.ToString(Form1.Unit_Names.Count() + 1), Form1.Cl_row[Form1.indexsender], Form1.Cl_cell[Form1.indexsender], 1, "Peasant", 2, 1, 1, 1, 25, 25, 0, 0, 0, "Blu", 1, 2);
                     }
                     Form1.updatevalues();
                 }

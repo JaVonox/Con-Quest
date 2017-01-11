@@ -58,7 +58,7 @@ public partial class Form1 : Form //the first form
     DataGridViewImageColumn imageCol0 = new DataGridViewImageColumn();
     //movemode is a variable which checks if the player is attempting to move a unit, hence the name
     bool movemode = false;
-
+    bool attackmode = false;
     //Unit variables. there is a lot.
 
     //Unit Assignment
@@ -665,9 +665,9 @@ public partial class Form1 : Form //the first form
         //so instead it only replaces tiles in the radius of the unit.
         try
         {
-            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+            if (Map.Rows[row].Cells[cell].Tag == "Unit" || Map.Rows[row].Cells[cell].Value == Properties.Resources.AttackHereUnit)
             {
-
+                Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
             }
             else
             {
@@ -686,9 +686,9 @@ public partial class Form1 : Form //the first form
                     {
                         if (Cl_BluInf[i] >= Cl_ReqInf[i] && Cl_BluInf[i] > Cl_RedInf[i] && Cl_BluInf[i] > Cl_GrnInf[i])
                         {
-                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                                        if (Map.Rows[row].Cells[cell].Tag == "Unit" || Map.Rows[row].Cells[cell].Value == Properties.Resources.AttackHereUnit)
                             {
-
+                                Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
                             }
                             else
                             {
@@ -698,9 +698,9 @@ public partial class Form1 : Form //the first form
                         }
                         else if (Cl_RedInf[i] >= Cl_ReqInf[i] && Cl_RedInf[i] > Cl_RedInf[i] && Cl_RedInf[i] > Cl_GrnInf[i])
                         {
-                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit" || Map.Rows[row].Cells[cell].Value == Properties.Resources.AttackHereUnit)
                             {
-
+                                Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
                             }
                             else
                             {
@@ -711,9 +711,9 @@ public partial class Form1 : Form //the first form
                         }
                         else if (Cl_GrnInf[i] >= Cl_ReqInf[i] && Cl_GrnInf[i] > Cl_RedInf[i] && Cl_GrnInf[i] > Cl_GrnInf[i])
                         {
-                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit" || Map.Rows[row].Cells[cell].Value == Properties.Resources.AttackHereUnit)
                             {
-
+                                Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
                             }
                             else
                             {
@@ -723,9 +723,9 @@ public partial class Form1 : Form //the first form
                         }
                         else
                         {
-                            if (Map.Rows[row].Cells[cell].Tag == "Unit")
+                            if (Map.Rows[row].Cells[cell].Tag == "Unit" || Map.Rows[row].Cells[cell].Value == Properties.Resources.AttackHereUnit)
                             {
-
+                                Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
                             }
                             else
                             {
@@ -799,7 +799,14 @@ public partial class Form1 : Form //the first form
     public static void createunit(string name, int row, int cell, int lvl, string cls, int att, int def, int crit,int dodge, int Maxhp, int hp, int weapon, int armor, int soul, string aff, int inf, int movesleft)
     {
         //this takes values and creates a unit with them
-        Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
+        if (aff == "Mon")
+        {
+            Map.Rows[row].Cells[cell].Value = Properties.Resources.VOID;
+        }
+        else
+        {
+          Map.Rows[row].Cells[cell].Value = Properties.Resources.TestSprite;
+        }
         Map.Rows[row].Cells[cell].Tag = "Unit";
         Unit_Names.Insert(Unit_Names.Count, name);
         Unit_Row.Insert(Unit_Row.Count, row);
@@ -820,7 +827,31 @@ public partial class Form1 : Form //the first form
         Unit_inf.Insert(Unit_inf.Count, inf);
         Unit_Movesleft.Insert(Unit_Movesleft.Count, movesleft);
     }
-    
+
+    public static void deleteunit(int id, int row, int cell)
+    {
+        //this takes values and creates a unit with them
+        Map.Rows[row].Cells[cell].Value = Properties.Resources.Green;
+        Map.Rows[row].Cells[cell].Tag = "";
+        Unit_Names.RemoveAt(id);
+        Unit_Row.RemoveAt(id);
+        Unit_Cell.RemoveAt(id);
+        Unit_Lvl.RemoveAt(id);
+        Unit_Exp.RemoveAt(id);
+        Unit_Class.RemoveAt(id);
+        Unit_Att.RemoveAt(id);
+        Unit_Def.RemoveAt(id);
+        UNit_Crit.RemoveAt(id);
+        Unit_Dodge.RemoveAt(id);
+        Unit_MaxHealth.RemoveAt(id);
+        Unit_Health.RemoveAt(id);
+        Unit_Weapon.RemoveAt(id);
+        Unit_Armor.RemoveAt(id);
+        Unit_Soul.RemoveAt(id);
+        Unit_aff.RemoveAt(id);
+        Unit_inf.RemoveAt(id);
+        Unit_Movesleft.RemoveAt(id);
+    }
     public static void updatevalues()
     {
         Gold_lbl.Text = Convert.ToString(gold);
@@ -831,19 +862,40 @@ public partial class Form1 : Form //the first form
     public void loadgame()
     {
         //this creates two units eitherside of the castle
-        createunit("Unit 1", Blueposrow, BlueposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
-        createunit("Unit 2", Blueposrow, BlueposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
+        createunit("Unit 1", Blueposrow, BlueposCell + 1, 1, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
+        createunit("Unit 2", Blueposrow, BlueposCell - 1, 1, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Blu", 1, 2);
 
-        createunit("Unit 1", Redposrow, RedposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Red", 1, 2);
-        createunit("Unit 2", Redposrow, RedposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Red", 1, 2);
+        createunit("Unit 1", Redposrow, RedposCell + 1, 1, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Red", 1, 2);
+        createunit("Unit 2", Redposrow, RedposCell - 1, 1, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Red", 1, 2);
 
-        createunit("Unit 1", Grnposrow, GrnposCell + 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Grn", 1, 2);
-        createunit("Unit 2", Grnposrow, GrnposCell - 1, 0, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Grn", 1, 2);
+        createunit("Unit 1", Grnposrow, GrnposCell + 1, 1, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Grn", 1, 2);
+        createunit("Unit 2", Grnposrow, GrnposCell - 1, 1, "Peasant", 2, 0, 1, 0, 25, 25, 0, 0, 0, "Grn", 1, 2);
         //this displays the amount of gold left, movesleft and production earned
+
+        mns();
         updatevalues();
         calcyear();
     }
      
+    public void applyim()
+    {
+        applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
+        applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
+        applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+        applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
+        applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
+        applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
+        applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
+        applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+        applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+        applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
+        applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
+        applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
+        applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
+        applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
+        applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+    }
+
     private void Map_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         InUse.Visible = false;
@@ -853,6 +905,33 @@ public partial class Form1 : Form //the first form
         Armory_Btn.Visible = false;
         Shop_btn.Enabled = false;
         Armory_Btn.Enabled = false;
+
+        if (attackmode == true)
+        {
+           applyim();
+           if (Unit_Movesleft[unitnum] > 0 && movesleftplayer > 0)
+                {
+                    for (int Unit = 0; Unit < Unit_Names.Count(); Unit++)
+                    {
+                        if (Unit_Row[Unit] == e.RowIndex)
+                        {
+                            if (Unit_Cell[Unit] == e.ColumnIndex)
+                            {
+                                battle(unitnum, Unit);
+                                Unit_Movesleft.RemoveAt(unitnum);
+                                Unit_Movesleft.Insert(unitnum, 0);
+                                movesleftplayer = movesleftplayer - 2;
+                                updatevalues();
+                                refreshlbl(unitnum);
+                                Unit = 100;
+                                attackmode = false;
+                                goto mexit;
+                            }
+                        }
+                    }
+            }
+           attackmode = false;
+        }
 
         if (Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor == Color.LightBlue)
         {
@@ -865,7 +944,6 @@ public partial class Form1 : Form //the first form
             Armory_Btn.Enabled = true;
         }
 
-        //bugged
         for (int i = 0;i <= Cl_row.Count() - 1; i++)
         {
             if (e.RowIndex == Convert.ToInt32(Cl_row[i]))
@@ -902,22 +980,7 @@ public partial class Form1 : Form //the first form
 
                     Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum]].Tag = null;
 
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+                    applyim();
 
                     Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag = "Unit";
                     Map.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Properties.Resources.TestSprite;
@@ -982,63 +1045,114 @@ public partial class Form1 : Form //the first form
                 }
                 else
                 {
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                    applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                    applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                    applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
-                    applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+                    applyim();
 
                     movemode = false;
                 }
             }
             else
             {
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] + 2);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] + 1);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] + 1);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                applyimage(Unit_Row[unitnum] + 1, Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 1);
-                applyimage(Unit_Row[unitnum], Unit_Cell[unitnum] - 2);
-                applyimage(Unit_Row[unitnum] - 1, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum] + 2, Unit_Cell[unitnum]);
-                applyimage(Unit_Row[unitnum] - 2, Unit_Cell[unitnum]);
+                applyim();
 
                 movemode = false;
             }
         }
         else
         {
-
-            for (int Unit = 0; Unit < Unit_Names.Count(); Unit++)
+            if(attackmode == false)
             {
-                if (Unit_Row[Unit] == e.RowIndex)
+                for (int Unit = 0; Unit < Unit_Names.Count(); Unit++)
                 {
-                    if (Unit_Cell[Unit] == e.ColumnIndex)
+                    if (Unit_Row[Unit] == e.RowIndex)
                     {
-                        refreshlbl(Unit);
+                        if (Unit_Cell[Unit] == e.ColumnIndex)
+                        {
+                            refreshlbl(Unit);
+                        }
                     }
                 }
             }
         }
-
+        mexit:
+        applyim();
     }
 
+    public void battle(int attunit, int defunit)
+    {
+
+        int temp = Unit_Health[defunit];
+        MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, Unit_aff[attunit] + " Unit " + Unit_Names[attunit] + " Attacked " + Unit_aff[defunit] + " Unit: " + Unit_Names[defunit]);
+        Unit_Health.RemoveAt(defunit);
+
+        int dmt = Unit_Att[attunit] - Unit_Def[defunit];
+        if (Unit_Att[attunit] - Unit_Def[defunit] <= 0)
+        {
+            Unit_Health.Insert(defunit, temp - 1);
+            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, Unit_aff[defunit] + " Unit " + Unit_Names[defunit] + " Took 1 damage!");
+        }
+        else
+        {
+            Unit_Health.Insert(defunit, temp - (Unit_Att[attunit] - Unit_Def[defunit]));
+            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, Unit_aff[defunit] + " Unit " + Unit_Names[defunit] + " Took " + dmt + " damage!");
+        }
+
+        if (Unit_Health[defunit] <= 0)
+        {
+            int xtemp = Unit_Exp[attunit];
+            Unit_Exp.RemoveAt(attunit);
+            Unit_Exp.Insert(attunit, xtemp + Unit_Exp[defunit]);
+            deleteunit(defunit, Unit_Row[defunit], Unit_Cell[defunit]);
+            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, Unit_aff[defunit] + " Unit " + Unit_Names[defunit] + " was slain in battle");
+            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, Unit_aff[attunit] + " Unit " + Unit_Names[attunit] + " killed " + Unit_aff[defunit] + " Unit " + Unit_Names[defunit]);
+            MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, Unit_Names[attunit] + " Gained " + xtemp + " Exp");
+        }
+    }
+
+    public void mns()
+    {
+        for (int i = 0; i <= mapsizehor / 3; i++)
+        {
+            int rand1;
+            int rand2;
+
+            rand1 = randomizar.Next(5, mapsizehor);
+            rand2 = randomizar.Next(5, mapsizever);
+
+            if (Map.Rows[rand2].Cells[rand1].Style.BackColor == Color.Green)
+            {
+                int maxlv = Unit_Lvl.Max();
+                int minlv = Unit_Lvl.Min();
+                int lv = randomizar.Next(minlv, maxlv + 20);
+                int lvup = Convert.ToInt32(lv / 10) * 2;
+
+                int natt = 1;
+                int ndef = 0;
+                int nhp = 10;
+
+                for (i = 0; i < lvup; i++ )
+                {
+                    int rand3 = randomizar.Next(1, 3);
+                    if(rand3 == 1)
+                    {
+                        natt = natt + 1;
+                    }
+                    if(rand3 == 2)
+                    {
+                        ndef = ndef + 1;
+                    }
+                    if (rand3 == 3)
+                    {
+                        nhp = nhp + 1;
+                    }
+                }
+                createunit("Monster " + i, rand1, rand2 + 1, lv, "Monster", natt, ndef, 0, 0, nhp, nhp, 0, 0, 0, "Mon", 0, 0); //this is so buggy. needs fix urgently.
+            }
+            else
+            {
+                i = i - 1;
+            }
+        }
+    }
     public void refreshlbl(int Unit)
     {
         unitnum = Unit;
@@ -1332,9 +1446,18 @@ public partial class Form1 : Form //the first form
     {
         if(SUnit_aff.Text == team)
         {
-            Displaymove();
+            if (Unit_Movesleft[unitnum] > 0 && movesleftplayer > 0)
+            {
+                applyim();
+                Displaymove();
 
-            movemode = true;
+                attackmode = false;
+                movemode = true;
+            }
+            else
+            {
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Unit " + Unit_Names[unitnum] + " is out of moves");
+            }
         }
 
     }
@@ -1559,6 +1682,372 @@ public partial class Form1 : Form //the first form
     {
         NewUnit Armory = new NewUnit();
         Armory.Show();
+    }
+
+    private void SUnit_Attack1_Click(object sender, System.EventArgs e)
+    {
+        if (SUnit_aff.Text == team)
+        {
+            if (Unit_Movesleft[unitnum] > 0 && movesleftplayer > 0)
+            {
+                applyim();
+                DisplayAttack();
+
+                movemode = false;
+                attackmode = true;
+            }
+            else
+            {
+                MessageBox_LB.Items.Insert(MessageBox_LB.Items.Count, "Unit " + Unit_Names[unitnum] + " is out of moves");
+            }
+        }
+    }
+
+    public void DisplayAttack()
+    {
+        try
+        {
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.AttackHere;
+                }
+
+           
+            }
+        }
+        catch
+        {
+            goto cheatsy1;
+        }
+
+    cheatsy1:
+
+        try
+        {
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] + 2].Value = Properties.Resources.AttackHere;
+                }
+            }
+        }
+        catch
+        {
+            goto cheatsy2;
+        }
+
+    cheatsy2:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHere;
+                }
+
+            }
+        }
+        catch
+        {
+            goto cheatsy3;
+        }
+
+    cheatsy3:
+
+        try
+        {
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.AttackHere;
+                }
+
+            }
+        }
+        catch
+        {
+            goto cheatsy4;
+        }
+
+    cheatsy4:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] + 1].Value = Properties.Resources.AttackHere;
+                }
+
+            }
+        }
+        catch
+        {
+            goto cheatsy5;
+        }
+
+    cheatsy5:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHere;
+                }
+            }
+        }
+        catch
+        {
+            goto cheatsy6;
+        }
+
+    cheatsy6:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHere;
+                }
+            }
+        }
+        catch
+        {
+            goto cheatsy7;
+        }
+
+    cheatsy7:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 2].Value = Properties.Resources.AttackHere;
+                }
+            }
+        }
+        catch
+        {
+            goto cheatsy8;
+        }
+
+    cheatsy8:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHere;
+                }
+
+            }
+        }
+        catch
+        {
+            goto cheatsy9;
+        }
+
+    cheatsy9:
+
+        try
+        {
+            if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum]].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHere;
+                }
+                
+            }
+        }
+        catch
+        {
+            goto cheatsy10;
+        }
+
+    cheatsy10:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] -1].Cells[Unit_Cell[unitnum] - 1].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] - 1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] -1].Cells[Unit_Cell[unitnum] - 1].Value = Properties.Resources.AttackHere;
+                }
+            }
+        }
+        catch
+        {
+            goto cheatsy11;
+        }
+
+    cheatsy11:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] + 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHere;
+                }
+            }
+        }
+        catch
+        {
+            goto cheatsy12;
+        }
+
+    cheatsy12:
+
+        try
+        {
+
+            if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Gray || Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Style.BackColor == Color.Blue)
+            {
+
+            }
+            else
+            {
+                if (Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Tag == "Unit")
+                {
+                    Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHereUnit;
+                }
+                else
+                {
+                    Map.Rows[Unit_Row[unitnum] - 2].Cells[Unit_Cell[unitnum]].Value = Properties.Resources.AttackHere;
+                }
+                
+            }
+        }
+        catch
+        {
+            goto cheatsy13;
+        }
+
+    cheatsy13:
+
+        Console.WriteLine("cheatsy13 is reporting an error here because there isnt any code to goto, but im lazy and its late so im just doing this instead");
     }
 }
 

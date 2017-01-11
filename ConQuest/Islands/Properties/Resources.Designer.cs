@@ -63,6 +63,26 @@ namespace Islands.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AttackHere {
+            get {
+                object obj = ResourceManager.GetObject("AttackHere", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AttackHereUnit {
+            get {
+                object obj = ResourceManager.GetObject("AttackHereUnit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BIGVOID {
             get {
                 object obj = ResourceManager.GetObject("BIGVOID", resourceCulture);
