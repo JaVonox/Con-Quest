@@ -1,5 +1,7 @@
 Note : Project currently on hiatus while i finish up my coursework and prepare for exams. 
 
+Project cancelled to work on Iron age, which is somewhat similar, but different. Basically just ignore this repository, im keeping it up for reference code.
+
 # ConQuest
 
 Please note that this project is (currently) very early in development, and many of the features included in this document may undergo drastic changes, as well as potentially being removed from the project as a whole. thank you!
